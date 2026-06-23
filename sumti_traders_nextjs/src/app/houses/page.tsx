@@ -154,8 +154,8 @@ function BrandLightbox({ brand, onClose }: { brand: Brand | null; onClose: () =>
   const [products, setProducts] = useState<any[]>([])
 
   useEffect(() => {
-    if (!brand) return;
     async function fetchLatest() {
+      if (!brand) return;
       // FT is stored as "Sumti" in folders, we map FT -> Sumti for query
       const queryBrand = brand.name === 'FT' ? 'Sumti' : brand.name;
       const { data } = await supabase.from('products').select('*').eq('brand', queryBrand).limit(6);

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { addProduct } from '@/app/admin/actions'
+import { addProduct } from '@/app/actions'
 
 export default function ProductModal({ onClose, onSuccess }: { onClose: () => void, onSuccess: () => void }) {
   const [loading, setLoading] = useState(false)
