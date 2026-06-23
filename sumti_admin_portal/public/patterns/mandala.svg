@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="-300 -300 600 600">
+  <g fill="none" stroke="#8a6d2a" stroke-width="0.6" opacity="0.18">
+    
+    <circle r="40"></circle>
+    <circle r="60"></circle>
+    <circle r="100"></circle>
+    <circle r="140"></circle>
+    <circle r="190"></circle>
+    <circle r="230"></circle>
+    <circle r="270"></circle>
+
+    
+    <g>
+      <circle r="6" fill="#8a6d2a"></circle>
+      <circle r="20"></circle>
+      <g>
+        <line x1="-20" x2="20" y1="0" y2="0"></line>
+        <line x1="0" x2="0" y1="-20" y2="20"></line>
+        <line x1="-14" x2="14" y1="-14" y2="14"></line>
+        <line x1="-14" x2="14" y1="14" y2="-14"></line>
+      </g>
+    </g>
+
+    
+    <g>
+      <g id="petal80">
+        <path d="M0 -60 Q12 -80 0 -100 Q-12 -80 0 -60 Z"></path>
+      </g>
+      <use href="#petal80" transform="rotate(30)"></use>
+      <use href="#petal80" transform="rotate(60)"></use>
+      <use href="#petal80" transform="rotate(90)"></use>
+      <use href="#petal80" transform="rotate(120)"></use>
+      <use href="#petal80" transform="rotate(150)"></use>
+      <use href="#petal80" transform="rotate(180)"></use>
+      <use href="#petal80" transform="rotate(210)"></use>
+      <use href="#petal80" transform="rotate(240)"></use>
+      <use href="#petal80" transform="rotate(270)"></use>
+      <use href="#petal80" transform="rotate(300)"></use>
+      <use href="#petal80" transform="rotate(330)"></use>
+    </g>
+
+    
+    <g>
+      <g id="dot160"><circle cx="0" cy="-160" r="6"></circle></g>
+      <use href="#dot160" transform="rotate(20)"></use>
+      <use href="#dot160" transform="rotate(40)"></use>
+      <use href="#dot160" transform="rotate(60)"></use>
+      <use href="#dot160" transform="rotate(80)"></use>
+      <use href="#dot160" transform="rotate(100)"></use>
+      <use href="#dot160" transform="rotate(120)"></use>
+      <use href="#dot160" transform="rotate(140)"></use>
+      <use href="#dot160" transform="rotate(160)"></use>
+      <use href="#dot160" transform="rotate(180)"></use>
+      <use href="#dot160" transform="rotate(200)"></use>
+      <use href="#dot160" transform="rotate(220)"></use>
+      <use href="#dot160" transform="rotate(240)"></use>
+      <use href="#dot160" transform="rotate(260)"></use>
+      <use href="#dot160" transform="rotate(280)"></use>
+      <use href="#dot160" transform="rotate(300)"></use>
+      <use href="#dot160" transform="rotate(320)"></use>
+      <use href="#dot160" transform="rotate(340)"></use>
+    </g>
+
+    
+    <g>
+      <g id="petal210">
+        <path d="M0 -190 Q24 -220 0 -260 Q-24 -220 0 -190 Z"></path>
+        <circle cx="0" cy="-225" r="3" fill="#8a6d2a"></circle>
+      </g>
+      <use href="#petal210" transform="rotate(22.5)"></use>
+      <use href="#petal210" transform="rotate(45)"></use>
+      <use href="#petal210" transform="rotate(67.5)"></use>
+      <use href="#petal210" transform="rotate(90)"></use>
+      <use href="#petal210" transform="rotate(112.5)"></use>
+      <use href="#petal210" transform="rotate(135)"></use>
+      <use href="#petal210" transform="rotate(157.5)"></use>
+      <use href="#petal210" transform="rotate(180)"></use>
+      <use href="#petal210" transform="rotate(202.5)"></use>
+      <use href="#petal210" transform="rotate(225)"></use>
+      <use href="#petal210" transform="rotate(247.5)"></use>
+      <use href="#petal210" transform="rotate(270)"></use>
+      <use href="#petal210" transform="rotate(292.5)"></use>
+      <use href="#petal210" transform="rotate(315)"></use>
+      <use href="#petal210" transform="rotate(337.5)"></use>
+    </g>
+  </g>
+</svg>
