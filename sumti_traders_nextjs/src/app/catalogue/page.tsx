@@ -96,23 +96,22 @@ export default function CataloguePage() {
       </section>
 
       {/* FILTER BAR */}
-      <div style={{
+      <div className="sticky top-[52px] md:top-[64px] z-10" style={{
         padding: 'clamp(18px, 2vw, 28px) clamp(22px, 4vw, 60px)',
         background: 'var(--cream-warm)',
         borderTop: '1px solid rgba(138,109,42,.2)',
         borderBottom: '1px solid rgba(138,109,42,.2)',
-        position: 'sticky', top: 64, zIndex: 5,
       }}>
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-          <div className="eyebrow" style={{ marginRight: 8, whiteSpace: 'nowrap' }}>Filter</div>
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center flex-wrap">
+          <div className="eyebrow md:mr-2 whitespace-nowrap">Filter</div>
           <div className="filters">
             {CATEGORIES.map(c => (
               <span key={c.id} className={`filter ${cat === c.id ? 'active' : ''}`} onClick={() => setCat(c.id)} role="button" tabIndex={0}>{c.label}</span>
             ))}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginTop: 10, flexWrap: 'wrap' }}>
-          <div className="eyebrow" style={{ marginRight: 8, whiteSpace: 'nowrap' }}>House</div>
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center mt-3 md:mt-[10px] flex-wrap">
+          <div className="eyebrow md:mr-2 whitespace-nowrap">House</div>
           <div className="filters">
             {HOUSES.map(c => (
               <span key={c.id} className={`filter ${house === c.id ? 'active' : ''}`} onClick={() => setHouse(c.id)} role="button" tabIndex={0}>{c.label}</span>
@@ -140,11 +139,7 @@ export default function CataloguePage() {
             <p className="thin" style={{ fontSize: 22, fontStyle: 'italic', marginTop: 18 }}>No pieces in this slice. Try another filter.</p>
           </div>
         ) : (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-            gap: 18,
-          }}>
+          <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-[10px] md:gap-[18px]">
             {items.map((it) => (
               <JewelCard key={it.id} product={it} onClick={() => setActive(it)} />
             ))}
@@ -159,7 +154,7 @@ export default function CataloguePage() {
         textAlign: 'center',
       }}>
         <Divider wide />
-        <h2 className="display" style={{ fontSize: 48, marginTop: 14, lineHeight: 1 }}>
+        <h2 className="display" style={{ fontSize: 'clamp(30px, 5vw, 48px)', marginTop: 14, lineHeight: 1 }}>
           Request the <em>full catalogue</em>
         </h2>
         <p className="body" style={{ marginTop: 14, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>

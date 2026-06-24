@@ -231,7 +231,7 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(auto, 420px) 1fr', gap: 60, alignItems: 'center' }}>
             <div>
               <div className="thin" style={{ fontSize: 36, color: 'var(--gold)', fontStyle: 'italic', letterSpacing: '.02em', lineHeight: 1 }}>Since</div>
-              <div className="display" style={{ fontSize: 180, lineHeight: '0.88', color: 'var(--ink)', marginTop: 4, letterSpacing: '-0.02em' }}>1970</div>
+              <div className="display" style={{ fontSize: 'clamp(96px, 15vw, 180px)', lineHeight: '0.88', color: 'var(--ink)', marginTop: 4, letterSpacing: '-0.02em' }}>1970</div>
             </div>
             <div>
               <p className="display" style={{ fontSize: 44, lineHeight: 1.1, marginBottom: 14 }}>
@@ -243,7 +243,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28, marginTop: 64 }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-16">
             {[
               ['1970', 'Year we began'],
               ['10,000+', 'Wholesale partners we empower'],
@@ -277,7 +277,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
           <BrandTile num="i" name="First Touch" tag="Gold Covering · Forming" desc="The flagship house. Gold covering and traditional forming jewellery — bridal sets, statement haarams, temple-inspired pieces. Made for the occasions of a lifetime." accent="#7a3a2a" />
           <BrandTile num="ii" name="Swarnika" tag="Temple · American Diamond" desc="Premium-quality temple jewellery and American diamond pieces. The connoisseur's house — careful, considered, made to be noticed up close." accent="#8a5028" />
           <BrandTile num="iii" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish — the daily floor's best friend." accent="#2c2520" />
@@ -313,7 +313,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 22 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
             <ServiceCard n="01" title="Retailers" titleEm="& Wholesalers" body="Jewellery shops, multi-brand stores, distributors. Direct from our Chennai branches with the full range of all three houses — catalogue, samples, credit terms, repeat orders." tag="Bulk supply" kind="necklace" />
             <ServiceCard n="02" title="Shopping Centres" titleEm="& Pop-ups" body="On request, we set up dedicated counters at malls, exhibitions, festive bazaars and shopping centres. We bring the display, the inventory and the staff training — you bring the floor space." tag="On-request setup" kind="bangle" />
             <ServiceCard n="03" title="3,000+ Women" titleEm="Entrepreneurs" body="Our reseller programme empowers more than three thousand women running their own jewellery businesses online. We supply at wholesale rates, share lookbooks, and help them grow." tag="Reseller programme" kind="earring" accent />

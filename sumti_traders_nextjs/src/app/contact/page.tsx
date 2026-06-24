@@ -94,7 +94,7 @@ export default function ContactPage() {
         background: 'var(--cream-base)',
         position: 'relative',
       }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {BRANCHES.map((b, i) => (
             <div key={b.name} style={{
               background: 'var(--cream-paper)',
@@ -160,8 +160,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div style={{
-          aspectRatio: '21/9',
+        <div className="aspect-square md:aspect-[21/9]" style={{
           background: 'var(--cream-paper)',
           border: '1px solid rgba(138,109,42,.25)',
           position: 'relative', overflow: 'hidden',
@@ -210,7 +209,7 @@ export default function ContactPage() {
         position: 'relative',
       }}>
         <div style={{ position: 'absolute', inset: 0, opacity: .16, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px' }} aria-hidden="true" />
-        <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 60 }}>
+        <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-[60px]">
           <div>
             <div className="eyebrow"><span className="snum">N° 03</span> · <span>Wholesale Enquiry</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 0.95, marginTop: 14 }}>
@@ -230,7 +229,7 @@ export default function ContactPage() {
           <div style={{ background: 'var(--cream-warm)', padding: 40, border: '1px solid rgba(138,109,42,.2)' }}>
             {!submitted ? (
               <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true) }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <Field label="Your name" />
                   <Field label="Store / Brand name" />
                   <Field label="City, State" />

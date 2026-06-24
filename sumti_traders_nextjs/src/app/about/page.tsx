@@ -40,10 +40,8 @@ export default function AboutPage() {
       <section style={{
         padding: 'clamp(40px, 5vw, 60px) clamp(22px, 4vw, 60px) clamp(60px, 8vw, 100px)',
         background: 'var(--cream-paper)',
-        display: 'grid',
-        gridTemplateColumns: '1.2fr 1fr',
-        gap: 80, alignItems: 'center',
       }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-20 items-center">
         <div>
           <p className="thin" style={{ fontSize: 28, fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)' }}>
             Sumti Traders began on a single counter in Sowcarpet, Chennai — one workbench, one ledger, a few hundred designs.
@@ -60,6 +58,7 @@ export default function AboutPage() {
           <div style={{ position: 'relative' }}>
             <Seal size={360} />
           </div>
+        </div>
         </div>
       </section>
 
@@ -81,7 +80,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {[
             ['01', 'The Sketch', 'Every collection begins as a pencil drawing in the design book — the same kind we have kept since the 1970s. A piece is committed to ink only when it has survived three rounds of revision.'],
             ['02', 'The Form', 'Master karigars shape each component in-house. Brass base, copper plate, gold covering — every step within sight of the bench, every finish checked against a five-decade archive.'],
@@ -126,16 +125,12 @@ export default function AboutPage() {
 
         <div style={{ position: 'relative', maxWidth: 820, margin: '0 auto' }}>
           {TIMELINE.map((e, i) => (
-            <div key={e.y} style={{
-              display: 'grid',
-              gridTemplateColumns: '120px 36px 1fr',
-              gap: 28,
+            <div key={e.y} className="grid grid-cols-[64px_1fr] md:grid-cols-[120px_36px_1fr] gap-5 md:gap-7 items-baseline" style={{
               padding: '24px 0',
               borderTop: i === 0 ? 'none' : '1px solid rgba(138,109,42,.25)',
-              alignItems: 'baseline',
             }}>
-              <div className="display" style={{ fontSize: 36, color: 'var(--gold)', fontStyle: 'italic' }}>{e.y}</div>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 36 }} aria-hidden="true">
+              <div className="display" style={{ fontSize: 'clamp(26px, 5vw, 36px)', color: 'var(--gold)', fontStyle: 'italic' }}>{e.y}</div>
+              <div className="hidden md:flex justify-center items-center h-[36px]" aria-hidden="true">
                 <span style={{ display: 'inline-block', width: 9, height: 9, background: 'var(--gold)', transform: 'rotate(45deg)' }} />
               </div>
               <div>
@@ -158,11 +153,11 @@ export default function AboutPage() {
           width: 580, height: 580,
           backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .3, pointerEvents: 'none',
         }} aria-hidden="true" />
-        <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 70, alignItems: 'center' }}>
+        <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-[70px] items-center">
           <div>
             <div className="eyebrow"><span className="snum">N° 04</span> · <span>The Reseller Programme</span></div>
-            <h2 className="display" style={{ fontSize: 84, lineHeight: 0.95, marginTop: 14 }}>
-              <span className="display" style={{ fontSize: 160, color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}>3,000<span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
+            <h2 className="display" style={{ fontSize: 'clamp(44px, 8vw, 84px)', lineHeight: 0.95, marginTop: 14 }}>
+              <span className="display" style={{ fontSize: 'clamp(84px, 15vw, 160px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}>3,000<span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
               women, <em>their own</em><br />businesses.
             </h2>
           </div>
@@ -195,7 +190,7 @@ export default function AboutPage() {
             <span style={{ display: 'inline-block', width: 6, height: 6, background: '#a3863f', transform: 'rotate(45deg)' }} aria-hidden="true" />
             &nbsp;&nbsp;What we hold to
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 40, marginTop: 36 }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-10 mt-9">
             {[
               ['Made here', 'Every piece, finished in our Chennai workshop. No outsourcing.'],
               ['Honest finish', 'Gold covering, openly so. Premium craft at a fair counter price.'],
