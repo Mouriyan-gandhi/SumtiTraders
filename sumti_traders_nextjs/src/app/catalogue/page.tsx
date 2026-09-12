@@ -84,44 +84,15 @@ export default function CataloguePage() {
         background: 'var(--cream-paper)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .18 }} aria-hidden="true" />
-        <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 items-end">
-          <div>
-            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Collections · Season AW &apos;25</span></div>
-            <h1 className="display" style={{ fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: 0.92, marginTop: 16, maxWidth: '15ch' }}>
-              The <em>Couverture</em> catalogue.
-            </h1>
-            <p className="thin" style={{ fontSize: 'clamp(17px, 1.6vw, 20px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 18, maxWidth: 560, lineHeight: 1.4 }}>
-              A curated preview from all three houses. Click any piece for the detail card. The complete catalogue ships physically with retailer accounts.
-            </p>
-          </div>
-
-          {/* Meta panel — fills right side, avoids dead space */}
-          <div className="hidden md:block" style={{
-            border: '1px solid rgba(138,109,42,.25)',
-            background: 'rgba(255,255,255,.35)',
-            padding: '22px 24px',
-          }}>
-            <div className="eyebrow" style={{ fontSize: 9, color: 'var(--gold)' }}>At a glance</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 14 }}>
-              <div>
-                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>{products.length}</div>
-                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Live pieces</div>
-              </div>
-              <div>
-                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>3</div>
-                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Houses</div>
-              </div>
-              <div>
-                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>7</div>
-                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Categories</div>
-              </div>
-              <div>
-                <div className="display" style={{ fontSize: 32, lineHeight: 1, fontStyle: 'italic', color: 'var(--gold)' }}>AW &apos;25</div>
-                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Season</div>
-              </div>
-            </div>
-          </div>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .08 }} aria-hidden="true" />
+        <div className="fadeup relative" style={{ maxWidth: 960 }}>
+          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>The Couverture Collection</span></div>
+          <h1 className="display" style={{ fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: 0.92, marginTop: 16, maxWidth: '15ch' }}>
+            The <em>Couverture</em> catalogue.
+          </h1>
+          <p className="thin" style={{ fontSize: 'clamp(17px, 1.6vw, 20px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 18, maxWidth: 620, lineHeight: 1.4 }}>
+            A curated preview from all three houses. Click any piece for the detail card. The complete catalogue ships physically with retailer accounts.
+          </p>
         </div>
       </section>
 
@@ -204,13 +175,13 @@ export default function CataloguePage() {
                 )}
               </div>
               <div>
-                <div className="eyebrow">{active.brand} · AW '25</div>
+                <div className="eyebrow">{active.brand} · Couverture</div>
                 <h3 className="display" style={{ fontSize: 44, marginTop: 8, lineHeight: 1, wordBreak: 'break-word', textTransform: 'capitalize' }}>
                   <em>{active.brand} {active.category}</em>
                 </h3>
                 <Divider />
                 <p className="body" style={{ marginTop: 14 }}>
-                  <span style={{ textTransform: 'capitalize' }}>{active.category}</span> — finished at the Sumti workshop. Available in matched sets.
+                  <span style={{ textTransform: 'capitalize' }}>{active.category}</span>, finished at the Sumti workshop. Available in matched sets.
                 </p>
                 <div style={{ display: 'flex', gap: 20, marginTop: 20 }}>
                   <div><div className="eyebrow">Ref</div><div className="display" style={{ fontSize: 20, marginTop: 4 }}>{active.id}</div></div>

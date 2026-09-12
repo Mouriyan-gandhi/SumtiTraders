@@ -7,54 +7,66 @@ import SiteLayout from '@/components/SiteLayout'
 import { TinyDiamond, Divider, CornerOrnament, Jewel } from '@/components/Patterns'
 import { supabase } from '@/lib/supabase'
 
+const SHARED_INSTAGRAM = 'https://www.instagram.com/ft_swarnika_code_manufacturer'
+
+function InstagramGlyph({ color = 'currentColor', size = 14 }: { color?: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.9" fill={color} stroke="none" />
+    </svg>
+  )
+}
+
 const BRANDS = [
   {
     id: 'firsttouch',
     name: 'First Touch',
     italic: 'Touch',
-    num: 'i',
     market: 'Gold Covering · Forming',
     tagline: 'Made for the moment.',
     color: '#7a3a2a',
     accentCream: '#f0dac7',
     logoBrown: '/logos/firsttouch-brown.png',
-    desc: 'The flagship house. First Touch is gold covering and traditional forming jewellery — bridal sets, temple-inspired haarams, statement jhumkas. Built for the occasions a family will frame on the wall.',
+    desc: 'The flagship house. First Touch is gold covering and traditional forming jewellery. Bridal sets, temple-inspired haarams, statement jhumkas. Built for the occasions a family will frame on the wall.',
     pillars: ['Gold covering sets', 'Forming jewellery', 'Bridal haarams', 'Temple-inspired'],
     estd: 'Flagship',
     quote: 'A bride is not adorned. She is announced.',
     stats: [['200+', 'designs in rotation'], ['38', 'master karigars'], ['1970', 'flagship since']],
+    instagram: null as string | null,
   },
   {
     id: 'swarnika',
     name: 'Swarnika',
     italic: 'rnika',
-    num: 'ii',
     market: 'Temple · American Diamond',
     tagline: "The connoisseur's house.",
     color: '#8a5028',
     accentCream: '#ecdbb7',
     logoBrown: '/logos/swarnika-brown.png',
-    desc: 'Premium-quality temple jewellery and American diamond pieces — the kind that earn a closer look. Swarnika is for the customer who notices the cut of a stone, the weight of a clasp, the patina of a finish.',
+    desc: 'Premium-quality temple jewellery and American diamond pieces. The kind that earn a closer look. Swarnika is for the customer who notices the cut of a stone, the weight of a clasp, the patina of a finish.',
     pillars: ['Temple jewellery', 'American diamond', 'Premium finish', 'Wedding-ready'],
     estd: '1988',
     quote: 'The closer it is looked at, the better it answers.',
     stats: [['450+', 'premium designs'], ['AD', 'grade stones'], ['1988', 'launched']],
+    instagram: SHARED_INSTAGRAM,
   },
   {
     id: 'ft',
     name: 'FT',
     italic: 'T',
-    num: 'iii',
     market: 'Affordable · Fashion',
     tagline: 'Daily floor, refined finish.',
     color: '#2c2520',
     accentCream: '#e8d9b7',
     logoBrown: '/logos/ft-brown.png',
-    desc: 'Budget-friendly fashion jewellery for retailers who move volume. FT keeps the price accessible without dropping the finish — the line that turns walk-ins into regulars.',
+    desc: 'Budget-friendly fashion jewellery for retailers who move volume. FT keeps the price accessible without dropping the finish. The line that turns walk-ins into regulars.',
     pillars: ['Budget-friendly', 'Fashion-forward', 'High turnover', 'Retail-ready'],
     estd: '2008',
     quote: 'Approachable is a finish too.',
     stats: [['6', 'drops a year'], ['85+', 'retail partners'], ['2008', 'launched']],
+    instagram: SHARED_INSTAGRAM,
   },
 ]
 
@@ -99,8 +111,8 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
           <div style={{ position: 'absolute', bottom: 16, right: 16, transform: 'scale(-1,-1)', opacity: .5 }} aria-hidden="true"><CornerOrnament size={70} /></div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
-            <div className="thin" style={{ fontSize: 16, color: brand.color, letterSpacing: '.3em' }}>N° {brand.num}</div>
-            <div className="eyebrow" style={{ color: brand.color, fontSize: 9 }}>{brand.estd === 'Flagship' ? 'SINCE 1970' : `SINCE · ${brand.estd}`}</div>
+            <div className="eyebrow" style={{ color: brand.color, fontSize: 10, letterSpacing: '.28em' }}>Chennai Atelier</div>
+            <div className="eyebrow" style={{ color: brand.color, fontSize: 9 }}>{brand.estd === 'Flagship' ? 'SINCE 1970' : `SINCE ${brand.estd}`}</div>
           </div>
 
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 0' }}>
@@ -117,14 +129,18 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
 
         <div style={{ order: reverse ? 0 : 1 }}>
           <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="snum" style={{ color: brand.color }}>House {brand.num}</span>
-            <span>·</span>
-            <span>{brand.tagline}</span>
+            <span style={{ color: brand.color }}>{brand.tagline}</span>
           </div>
           <h2 className="display" style={{ fontSize: 'clamp(56px, 6.5vw, 88px)', lineHeight: 0.92, marginTop: 12, color: brand.color }}>
             {brand.name.replace(brand.italic, '')}<em>{brand.italic}</em>
           </h2>
           <p className="body" style={{ marginTop: 22, maxWidth: 460, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
+
+          {brand.instagram && (
+            <a href={brand.instagram} target="_blank" rel="noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 18, color: brand.color, fontSize: 10, letterSpacing: '.24em' }}>
+              <InstagramGlyph color={brand.color} /> On Instagram
+            </a>
+          )}
 
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 22 }}>
             {brand.pillars.map(p => (
@@ -170,7 +186,7 @@ function BrandSectionDark({ brand, onOpen }: { brand: Brand; onOpen: () => void 
       <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '780px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />
       <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-10 md:gap-20 items-center">
         <div style={{ textAlign: 'center' }}>
-          <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.32em' }}>House {brand.num}</div>
+          <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.32em' }}>The Connoisseur&apos;s House</div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 22 }}>
             <Image src={logoCream} alt={brand.name} width={360} height={200} style={{ maxWidth: '80%', maxHeight: 200, objectFit: 'contain', filter: 'drop-shadow(0 12px 30px rgba(0,0,0,.4))' }} />
           </div>
@@ -200,9 +216,16 @@ function BrandSectionDark({ brand, onOpen }: { brand: Brand; onOpen: () => void 
             ))}
           </div>
 
-          <button className="btn" style={{ marginTop: 30, borderColor: 'var(--cream-paper)', color: 'var(--cream-paper)' }} onClick={onOpen}>
-            Inside the house <span className="arr">→</span>
-          </button>
+          <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 30, flexWrap: 'wrap' }}>
+            <button className="btn" style={{ borderColor: 'var(--cream-paper)', color: 'var(--cream-paper)' }} onClick={onOpen}>
+              Inside the house <span className="arr">→</span>
+            </button>
+            {brand.instagram && (
+              <a href={brand.instagram} target="_blank" rel="noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--cream-deep)', fontSize: 10, letterSpacing: '.24em' }}>
+                <InstagramGlyph color="#d4bd87" /> On Instagram
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -230,23 +253,26 @@ function BrandSectionStrip({ brand, onOpen }: { brand: Brand; onOpen: () => void
     }}>
       <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-14 items-center">
         <div>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span className="snum" style={{ color: brand.color }}>House {brand.num}</span>
-            <span>·</span>
-            <span>{brand.tagline}</span>
+          <div className="eyebrow" style={{ color: brand.color }}>{brand.tagline}</div>
+          <div style={{ marginTop: 16, display: 'flex', alignItems: 'flex-end', gap: 10 }}>
+            <Image src={brand.logoBrown} alt={brand.name} width={220} height={220} style={{ maxWidth: 220, height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 6px 18px rgba(58,24,32,.12))' }} priority={false} />
           </div>
-          <h2 className="display" style={{ fontSize: 'clamp(52px, 6vw, 82px)', lineHeight: 0.94, marginTop: 12, color: brand.color }}>
-            {brand.name.replace(brand.italic, '')}<em>{brand.italic}</em>
-          </h2>
-          <p className="body" style={{ marginTop: 20, maxWidth: 440, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
+          <p className="body" style={{ marginTop: 24, maxWidth: 440, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 18 }}>
             {brand.pillars.map(p => (
               <span key={p} className="chip" style={{ borderColor: `${brand.color}55`, color: brand.color, fontSize: 9 }}>{p}</span>
             ))}
           </div>
-          <button className="btn" style={{ marginTop: 26, borderColor: brand.color, color: brand.color }} onClick={onOpen}>
-            Inside the house <span className="arr">→</span>
-          </button>
+          <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 26, flexWrap: 'wrap' }}>
+            <button className="btn" style={{ borderColor: brand.color, color: brand.color }} onClick={onOpen}>
+              Inside the house <span className="arr">→</span>
+            </button>
+            {brand.instagram && (
+              <a href={brand.instagram} target="_blank" rel="noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: brand.color, fontSize: 10, letterSpacing: '.24em' }}>
+                <InstagramGlyph color={brand.color} /> On Instagram
+              </a>
+            )}
+          </div>
         </div>
 
         {/* 4-tile product strip */}
@@ -328,7 +354,7 @@ function BrandLightbox({ brand, onClose }: { brand: Brand | null; onClose: () =>
         <header className="brand-panel-head">
           <Image src={brand.logoBrown} alt={brand.name} width={220} height={80} style={{ maxHeight: 72, width: 'auto', objectFit: 'contain' }} />
           <div className="brand-panel-eyebrow" style={{ color: brand.color }}>
-            House {brand.num} · {brand.market}
+            {brand.market}
           </div>
           <h2 className="display brand-panel-title" style={{ color: brand.color }}>
             The {brand.name} <em>collection</em>
@@ -377,44 +403,14 @@ export default function HousesPage() {
           width: '700px', height: '700px',
           backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', opacity: .4,
         }} aria-hidden="true" />
-        <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 md:gap-14 items-center">
-          <div>
-            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Three Houses</span></div>
-            <h1 className="display" style={{ fontSize: 'clamp(44px, 7vw, 100px)', lineHeight: 0.94, marginTop: 16 }}>
-              Three <em>brands.</em><br />Three customers.
-            </h1>
-            <p className="thin" style={{ fontSize: 'clamp(18px, 1.8vw, 22px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 24, maxWidth: 560, lineHeight: 1.4 }}>
-              First Touch for gold covering and forming. Swarnika for temple and American diamond. FT for affordable fashion. One trust, three counters.
-            </p>
-          </div>
-
-          {/* Right — 3 brand mini-tiles as jump-to nav */}
-          <div className="hidden md:flex flex-col gap-3">
-            {BRANDS.map((b) => (
-              <a key={b.id} href={`#${b.id}`} style={{
-                display: 'grid',
-                gridTemplateColumns: '46px 1fr auto',
-                alignItems: 'center',
-                gap: 16,
-                padding: '14px 18px',
-                background: 'rgba(255,255,255,.4)',
-                border: `1px solid ${b.color}22`,
-                transition: 'border-color .3s ease, background .3s ease',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${b.color}55`; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.7)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = `${b.color}22`; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.4)' }}
-              >
-                <div style={{ width: 46, height: 46, background: b.accentCream, border: `1px solid ${b.color}33`, position: 'relative' }}>
-                  <Image src={b.logoBrown} alt="" fill sizes="46px" style={{ objectFit: 'contain', padding: 6 }} />
-                </div>
-                <div>
-                  <div className="eyebrow" style={{ fontSize: 9, color: b.color }}>N° {b.num}</div>
-                  <div className="display" style={{ fontSize: 20, lineHeight: 1, color: b.color, marginTop: 4 }}>{b.name}</div>
-                </div>
-                <span className="eyebrow" style={{ fontSize: 10, color: b.color }}>Jump →</span>
-              </a>
-            ))}
-          </div>
+        <div className="fadeup relative" style={{ maxWidth: 960 }}>
+          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Three Houses</span></div>
+          <h1 className="display" style={{ fontSize: 'clamp(44px, 7vw, 100px)', lineHeight: 0.94, marginTop: 16 }}>
+            Three <em>brands.</em><br />Three customers.
+          </h1>
+          <p className="thin" style={{ fontSize: 'clamp(18px, 1.8vw, 22px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 24, maxWidth: 620, lineHeight: 1.4 }}>
+            First Touch for gold covering and forming. Swarnika for temple and American diamond. FT for affordable fashion. One trust, three counters.
+          </p>
         </div>
       </section>
 
@@ -439,7 +435,7 @@ export default function HousesPage() {
             All three brands, <em>one</em> wholesale partner.
           </h2>
           <p className="thin" style={{ fontSize: 20, fontStyle: 'italic', color: 'rgba(250,243,224,.7)', marginTop: 22, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-            Retailers across India source First Touch, Swarnika, and FT from a single point — our Chennai head office.
+            Retailers across India source First Touch, Swarnika, and FT from a single point. Our Chennai head office.
           </p>
         </div>
       </section>

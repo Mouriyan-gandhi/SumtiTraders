@@ -8,15 +8,17 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sumtitraders.i
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Sumti Traders — Gold Covering Jewellery Wholesalers · Chennai · Since 1970',
+    default: 'Sumti Traders · Gold Covering Jewellery Wholesalers · Sowcarpet, Chennai · Since 1970',
     template: '%s · Sumti Traders',
   },
   description:
-    'Wholesale gold covering jewellery from Chennai since 1970. Three houses — First Touch, Swarnika, FT — supplying 10,000+ retail partners and 3,000+ women entrepreneurs across India.',
+    'Wholesale gold covering jewellery from Sowcarpet, Chennai since 1970. Three houses: First Touch, Swarnika, FT. Supplying 10,000+ retail partners and 3,000+ women entrepreneurs across India.',
   keywords: [
     'gold covering jewellery',
     'gold covering jewellery wholesalers',
     'jewellery wholesalers Chennai',
+    'Sowcarpet jewellery wholesalers',
+    'George Town Chennai jewellery',
     'imitation jewellery wholesale India',
     'temple jewellery wholesale',
     'American diamond jewellery wholesale',
@@ -24,9 +26,6 @@ export const metadata: Metadata = {
     'First Touch jewellery',
     'Swarnika jewellery',
     'FT jewellery',
-    'Sowcarpet jewellery wholesalers',
-    'T Nagar jewellery',
-    'Anna Nagar jewellery',
     'reseller programme jewellery',
   ],
   authors: [{ name: 'Sumti Traders' }],
@@ -38,14 +37,14 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: SITE_URL,
     siteName: 'Sumti Traders',
-    title: 'Sumti Traders — Gold Covering Jewellery Wholesalers · Chennai · Since 1970',
+    title: 'Sumti Traders · Gold Covering Jewellery Wholesalers · Sowcarpet, Chennai · Since 1970',
     description:
-      'Three houses, one trust. Wholesale gold covering, temple, American diamond and fashion jewellery from Chennai — supplying 10,000+ retailers across India.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Sumti Traders — Since 1970' }],
+      'Three houses, one trust. Wholesale gold covering, temple, American diamond and fashion jewellery from Sowcarpet, Chennai. Supplying 10,000+ retailers across India.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Sumti Traders · Since 1970' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sumti Traders — Gold Covering Jewellery Wholesalers · Chennai',
+    title: 'Sumti Traders · Gold Covering Jewellery Wholesalers · Chennai',
     description:
       'Wholesale gold covering jewellery from Chennai since 1970. First Touch, Swarnika, FT.',
     images: ['/og-image.png'],

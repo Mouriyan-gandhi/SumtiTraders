@@ -4,7 +4,7 @@ import { Resend } from 'resend'
 export const runtime = 'nodejs'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'wholesale@sumtitraders.in'
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'sumtitraders@gmail.com'
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Sumti Traders <onboarding@resend.dev>'
 const REPLY_ACK_ENABLED = process.env.CONTACT_ACK !== 'off'
 
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
       </div>`
 
     const text = [
-      `New wholesale enquiry — Sumti Traders`,
+      `New wholesale enquiry · Sumti Traders`,
       ``,
       `Name: ${name}`,
       store ? `Store: ${store}` : null,
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
           <div style="font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#8a6d2a; margin-bottom:8px;">Sumti Traders · Since 1970</div>
           <h1 style="font-family: Georgia, serif; font-size:32px; margin:0 0 12px; color:#1a1612;">Thank you.</h1>
           <p style="font-size:15px; line-height:1.7; color:#3a322a;">Your enquiry has reached our Sowcarpet wholesale desk. Someone from our team will write back within forty-eight hours.</p>
-          <p style="margin-top:24px; font-size:13px; color:#6b5e4f;">— The Sumti Traders Wholesale Desk<br/>Chennai · India</p>
+          <p style="margin-top:24px; font-size:13px; color:#6b5e4f;">The Sumti Traders Wholesale Desk<br/>Sowcarpet · Chennai · India</p>
         </div>`
       try {
         await resend.emails.send({
@@ -115,7 +115,7 @@ export async function POST(req: Request) {
           to: [email],
           subject: 'We received your enquiry · Sumti Traders',
           html: ackHtml,
-          text: `Thank you.\n\nYour enquiry has reached our Sowcarpet wholesale desk. Someone from our team will write back within forty-eight hours.\n\n— The Sumti Traders Wholesale Desk\nChennai · India`,
+          text: `Thank you.\n\nYour enquiry has reached our Sowcarpet wholesale desk. Someone from our team will write back within forty-eight hours.\n\nThe Sumti Traders Wholesale Desk\nSowcarpet · Chennai · India`,
         })
       } catch (e) {
         console.warn('[contact] ack email failed', e)

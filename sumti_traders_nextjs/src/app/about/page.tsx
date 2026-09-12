@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import SiteLayout from '@/components/SiteLayout'
-import { TinyDiamond, Divider, Ornament, Seal } from '@/components/Patterns'
+import { TinyDiamond, Divider, Ornament } from '@/components/Patterns'
 import CountUp from '@/components/CountUp'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sumtitraders.in'
 
 export const metadata: Metadata = {
-  title: 'Our Heritage — Sumti Traders since 1970 · Chennai Gold Covering Jewellery',
+  title: 'Our Heritage · Sumti Traders since 1970 · Chennai Gold Covering Jewellery',
   description:
     'From a single counter in Sowcarpet in 1970 to three houses, three Chennai branches, 10,000+ retail partners and 3,000+ women entrepreneurs. The Sumti Traders story.',
   keywords: [
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'Our Heritage — Sumti Traders since 1970',
+    title: 'Our Heritage · Sumti Traders since 1970',
     description: 'Fifty years of wholesale gold covering jewellery from Chennai.',
     url: `${SITE_URL}/about`,
     type: 'article',
@@ -26,12 +27,12 @@ export const metadata: Metadata = {
 
 const TIMELINE = [
   { y: '1970', t: 'A counter in Sowcarpet', d: 'Sumti Traders opens its first wholesale counter in north Chennai. A handful of designs, one shared workbench, one ledger.' },
-  { y: '1976', t: 'The design ledger', d: "The first design book is bound — entries that today's pieces still trace back to." },
-  { y: '1988', t: 'Swarnika is born', d: 'The premium temple and American diamond house — launched to answer retailers asking for the considered, looked-at-closely piece.' },
-  { y: '1995', t: 'Second branch · T. Nagar', d: "A second Chennai address opens to serve the city's busiest retail belt." },
-  { y: '2008', t: 'FT joins the family', d: 'A budget-friendly fashion line built for retailers who move volume — accessible price, refined finish.' },
-  { y: '2015', t: 'Third branch · Anna Nagar', d: 'The full three-branch network is complete; partnerships expand across India.' },
-  { y: 'Today', t: '10,000+ partners, 3,000+ women', d: 'Three houses, three branches, more than ten thousand retail partners and over three thousand women entrepreneurs supported online — still wholesale-first, still Chennai.' },
+  { y: '1976', t: 'The design ledger', d: "The first design book is bound. Entries that today's pieces still trace back to." },
+  { y: '1988', t: 'Swarnika is born', d: 'The premium temple and American diamond house. Launched to answer retailers asking for the considered, looked-at-closely piece.' },
+  { y: '2000', t: 'The Sowcarpet warehouses', d: 'Two more Sowcarpet units open to hold the full range of all three houses under one bench, minutes from the main branch.' },
+  { y: '2008', t: 'FT joins the family', d: 'A budget-friendly fashion line built for retailers who move volume. Accessible price, refined finish.' },
+  { y: '2016', t: '10,000 retail partners', d: 'The wholesale network crosses the ten-thousand mark. Boxes leave Sowcarpet for every state in India.' },
+  { y: 'Today', t: '10,000+ partners, 3,000+ women', d: 'Three houses, one Chennai head office, more than ten thousand retail partners and over three thousand women entrepreneurs supported online. Still wholesale first, still Sowcarpet.' },
 ]
 
 export default function AboutPage() {
@@ -52,21 +53,32 @@ export default function AboutPage() {
               A heritage<br />of <em>trust.</em>
             </h1>
             <p className="thin" style={{ fontSize: 'clamp(20px, 2vw, 26px)', fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)', marginTop: 28, maxWidth: 520 }}>
-              Sumti Traders began on a single counter in Sowcarpet, Chennai — one workbench, one ledger, a few hundred designs.
+              Sumti Traders began on a single counter in Sowcarpet, Chennai. One workbench, one ledger, a few hundred designs.
             </p>
             <p className="body" style={{ marginTop: 20, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
               More than five decades on, what began as a single counter has grown into a three-house operation empowering over ten thousand retail partners across India. The principle has not changed. We make gold covering jewellery the way it ought to be made: finished by people who can tell the right curve from a curve that is almost right.
             </p>
             <p className="body" style={{ marginTop: 14, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
-              Our three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch</em> for gold covering and forming, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>Swarnika</em> for premium temple and American diamond, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>FT</em> for affordable fashion — reach retailers in every corner of the country from three Chennai branches.
+              Our three houses reach retailers in every corner of the country from our Chennai head office. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch</em> for gold covering and forming. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>Swarnika</em> for premium temple and American diamond. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>FT</em> for affordable fashion.
             </p>
           </div>
 
-          <div className="fadeup fadeup-delay-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: 'clamp(260px, 34vw, 440px)' }}>
-            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', opacity: .25 }} aria-hidden="true" />
-            <div style={{ position: 'relative', width: 'clamp(240px, 30vw, 380px)' }}>
-              <Seal size={360} />
+          <div className="fadeup fadeup-delay-1 about-hero-photo">
+            <div className="about-hero-photo-frame">
+              <div className="about-hero-photo-corner tl" />
+              <div className="about-hero-photo-corner tr" />
+              <div className="about-hero-photo-corner bl" />
+              <div className="about-hero-photo-corner br" />
+              <Image
+                src="/photos/about-shop.jpeg"
+                alt="Sumti Traders shop in Sowcarpet, Chennai"
+                fill
+                sizes="(max-width: 768px) 80vw, 380px"
+                style={{ objectFit: 'cover' }}
+                priority
+              />
             </div>
+            <div className="body-sm" style={{ marginTop: 14, color: 'var(--ink-muted)', letterSpacing: '.18em', fontSize: 10, textTransform: 'uppercase' }}>Sowcarpet · Chennai</div>
           </div>
         </div>
       </section>
@@ -79,20 +91,20 @@ export default function AboutPage() {
       }}>
         <div className="sect-head">
           <div className="left">
-            <div className="eyebrow"><span className="snum">N° 02</span> · <span>How it is made</span></div>
+            <div className="eyebrow"><span>How it is made</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
               How a piece <em>is made.</em>
             </h2>
           </div>
           <div className="right">
-            <p className="body">Three stages, in our care from sketch to ship. Gold covering, forming, finishing — every step under our Chennai roof.</p>
+            <p className="body">Three stages, in our care from sketch to ship. Gold covering, forming, finishing. Every step under our Chennai roof.</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {[
-            ['01', 'The Sketch', 'Every collection begins as a pencil drawing in the design book — the same kind we have kept since the 1970s. A piece is committed to ink only when it has survived three rounds of revision.'],
-            ['02', 'The Form', 'Master karigars shape each component in-house. Brass base, copper plate, gold covering — every step within sight of the bench, every finish checked against a five-decade archive.'],
+            ['01', 'The Sketch', 'Every collection begins as a pencil drawing in the design book, the same kind we have kept since the 1970s. A piece is committed to ink only when it has survived three rounds of revision.'],
+            ['02', 'The Form', 'Master karigars shape each component in-house. Brass base, copper plate, gold covering. Every step within sight of the bench, every finish checked against a five-decade archive.'],
             ['03', 'The Quiet', 'Before a piece leaves Chennai, it rests on the studio table for forty-eight hours. We look at it in the morning, at noon, in evening light. If it still looks right at the end, it ships.'],
           ].map(([n, t, d], i) => (
             <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
@@ -125,7 +137,7 @@ export default function AboutPage() {
 
         <div className="sect-head" style={{ position: 'relative' }}>
           <div className="left">
-            <div className="eyebrow"><span className="snum">N° 03</span> · <span>A Timeline</span></div>
+            <div className="eyebrow"><span>A Timeline</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
               From 1970 <em>onwards.</em>
             </h2>
@@ -164,7 +176,7 @@ export default function AboutPage() {
         }} aria-hidden="true" />
         <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-[70px] items-center">
           <div>
-            <div className="eyebrow"><span className="snum">N° 04</span> · <span>The Reseller Programme</span></div>
+            <div className="eyebrow"><span>The Reseller Programme</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(44px, 8vw, 84px)', lineHeight: 0.95, marginTop: 14 }}>
               <span className="display" style={{ fontSize: 'clamp(84px, 15vw, 160px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}><CountUp end={3000} /><span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
               women, <em>their own</em><br />businesses.
@@ -175,7 +187,7 @@ export default function AboutPage() {
               More than three thousand women across India run jewellery businesses online with our support.
             </p>
             <p className="body" style={{ marginTop: 18, fontSize: 14, lineHeight: 1.75 }}>
-              We supply at wholesale rates, share lookbooks and product photography, advise on pricing, and handle dispatch so they can focus on their customers. From Instagram boutiques in small towns to home-run resale studios in metros — the Sumti reseller circle is our quietest, proudest export.
+              We supply at wholesale rates, share lookbooks and product photography, advise on pricing, and handle dispatch so they can focus on their customers. From Instagram boutiques in small towns to home-run resale studios in metros, the Sumti reseller circle is our quietest, proudest export.
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 20 }}>
               <span className="chip">Wholesale rates</span>
@@ -195,20 +207,20 @@ export default function AboutPage() {
       }}>
         <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '280px' }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
-          <div className="eyebrow" style={{ color: 'var(--cream-deep)', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ display: 'inline-block', width: 6, height: 6, background: '#a3863f', transform: 'rotate(45deg)' }} aria-hidden="true" />
-            &nbsp;&nbsp;What we hold to
+          <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(163,134,63,.5), rgba(163,134,63,0))', maxWidth: 220, marginBottom: 18 }} />
+          <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.32em', marginBottom: 32 }}>
+            What we hold to
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-10 mt-9">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
             {[
               ['Made here', 'Every piece, finished in our Chennai workshop. No outsourcing.'],
               ['Honest finish', 'Gold covering, openly so. Premium craft at a fair counter price.'],
-              ['Three houses', 'First Touch, Swarnika, FT — three markets, one trust.'],
+              ['Three houses', 'First Touch, Swarnika, FT. Three markets, one trust.'],
               ['Together we grow', '3,000+ women entrepreneurs running businesses with us.'],
             ].map(([t, d], i) => (
-              <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`}>
+              <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{ borderTop: '1px solid rgba(250,243,224,.15)', paddingTop: 18 }}>
                 <div className="display" style={{ fontSize: 22, color: 'var(--cream-paper)' }}>{t}</div>
-                <div className="body-sm" style={{ marginTop: 8, color: 'rgba(250,243,224,.65)' }}>{d}</div>
+                <div className="body-sm" style={{ marginTop: 10, color: 'rgba(250,243,224,.65)', lineHeight: 1.6 }}>{d}</div>
               </div>
             ))}
           </div>

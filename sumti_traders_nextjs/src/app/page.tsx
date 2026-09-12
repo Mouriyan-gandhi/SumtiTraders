@@ -13,16 +13,12 @@ import JewelCardSkeleton from '@/components/JewelCardSkeleton'
 const BrandTile = ({
   num, name, tag, desc, accent
 }: {
-  num: string; name: string; tag: string; desc: string; accent: string;
+  num?: string; name: string; tag: string; desc: string; accent: string;
 }) => {
   return (
     <Link href="/houses" className="brand-card" style={{ background: 'var(--cream-paper)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textDecoration: 'none' }}>
       <div className="bgwash" style={{ background: `radial-gradient(circle at 80% 80%, ${accent}11 0%, transparent 60%), var(--cream-paper)` }} aria-hidden="true" />
-      <div className="heroseal" aria-hidden="true">
-        <Ornament size={240} />
-      </div>
       <div className="inner">
-        <div className="num">N° {num}</div>
         <h3>
           {name.split(' ').map((w, i) => i === 0 ? <span key={i}>{w} </span> : <em key={i}>{w}</em>)}
         </h3>
@@ -144,24 +140,15 @@ export default function HomePage() {
           position: 'absolute', right: '-18%', top: '-22%',
           width: '900px', height: '900px',
           backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-          opacity: 1, pointerEvents: 'none',
-          filter: 'brightness(0.35) contrast(2.4) saturate(1.2)',
-          mixBlendMode: 'multiply',
+          opacity: .16, pointerEvents: 'none',
           animation: 'spin 240s linear infinite',
-        }} aria-hidden="true" />
-        {/* paisley scatter */}
-        <div style={{
-          position: 'absolute', left: '-8%', bottom: '-25%',
-          width: '460px', height: '460px',
-          backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '280px',
-          opacity: .35, pointerEvents: 'none',
         }} aria-hidden="true" />
 
         <div className="fadeup" style={{ position: 'relative', zIndex: 2 }}>
           {/* chips */}
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 36, flexWrap: 'wrap' }}>
-            <span className="chip">Since 1970</span>
-            <span className="chip">Chennai · 3 Branches</span>
+            <span className="chip">Sowcarpet · Chennai</span>
+            <span className="chip">Wholesale since 1970</span>
             <span className="chip">10,000+ Retail Partners</span>
           </div>
 
@@ -185,7 +172,7 @@ export default function HomePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 50, flexWrap: 'wrap' }}>
             <div style={{ flex: 'none', maxWidth: 360 }}>
               <p className="thin" style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--ink-soft)', fontStyle: 'italic' }}>
-                Gold covering jewellery from Chennai. Three houses, one trust — empowering 10,000+ retail partners across India.
+                Gold covering jewellery from Chennai. Three houses, one trust. Empowering 10,000+ retail partners across India.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 10, marginLeft: 'auto' }}>
@@ -204,7 +191,7 @@ export default function HomePage() {
             textTransform: 'uppercase', color: 'var(--ink-muted)',
           }}>
             <span>Scroll · Begin the journey</span>
-            <span>N° 01 — Couverture</span>
+            <span>Couverture Collection</span>
             <span>↓</span>
           </div>
         </div>
@@ -216,10 +203,6 @@ export default function HomePage() {
         position: 'relative', overflow: 'hidden',
         background: 'var(--cream-warm)',
       }}>
-        <div style={{ position: 'absolute', right: '-12%', top: '50%', transform: 'translateY(-50%)', opacity: .35 }} aria-hidden="true">
-          <Seal size={420} />
-        </div>
-
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1200, margin: '0 auto' }}>
           <div className="eyebrow fadeup" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
             <TinyDiamond /> <span>The House · Since 1970</span>
@@ -230,7 +213,7 @@ export default function HomePage() {
               A heritage in <em>gold covering jewellery.</em>
             </h2>
             <p className="body legacy-lede">
-              Sumti Traders has supplied India&apos;s finest retailers with gold covering jewellery since the 1970s. Three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch, Swarnika, FT</em> — answer to three markets, all to one standard of finish.
+              Sumti Traders has supplied India&apos;s finest retailers with gold covering jewellery since the 1970s. Three houses. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch, Swarnika, FT.</em> Three markets, one standard of finish.
             </p>
           </div>
 
@@ -239,7 +222,7 @@ export default function HomePage() {
               { n: 1970, suffix: '', l: 'Year we began', fmt: (v: number) => v.toString() },
               { n: 10000, suffix: '+', l: 'Wholesale partners empowered' },
               { n: 3000, suffix: '+', l: 'Women entrepreneurs supported' },
-              { n: 3, suffix: '', l: 'Chennai branches' },
+              { n: 3, suffix: '', l: 'Sowcarpet units (branch + 2 warehouses)' },
             ].map((s, i) => (
               <div key={i} className="legacy-stat">
                 <div className="display legacy-stat-num">
@@ -260,20 +243,20 @@ export default function HomePage() {
       }}>
         <div className="sect-head fadeup">
           <div className="left">
-            <div className="eyebrow"><span className="snum">N° 02</span> · <span>Our Three Houses</span></div>
+            <div className="eyebrow"><span>Our Three Houses</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
               One legacy, <em>three</em><br />distinct voices.
             </h2>
           </div>
           <div className="right">
-            <p className="body">Each house carries its own register — gold covering bridal, temple and American diamond, budget-friendly fashion — finished to one shared standard.</p>
+            <p className="body">Each house carries its own register. Gold covering bridal, temple and American diamond, budget-friendly fashion. All finished to one shared standard.</p>
           </div>
         </div>
 
         <div className="brand-tri-grid mt-6">
-          <div className="fadeup brand-side"><BrandTile num="i" name="First Touch" tag="Gold Covering · Forming · Flagship" desc="The flagship house. Gold covering and traditional forming jewellery — bridal sets, statement haarams, temple-inspired pieces." accent="#7a3a2a" /></div>
-          <div className="fadeup fadeup-delay-1 brand-hero"><BrandTile num="ii" name="Swarnika" tag="Temple · American Diamond · The Connoisseur's House" desc="Premium-quality temple jewellery and American diamond pieces. Careful, considered, made to be noticed up close. The centrepiece of the Sumti family." accent="#8a5028" /></div>
-          <div className="fadeup fadeup-delay-2 brand-side"><BrandTile num="iii" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish." accent="#2c2520" /></div>
+          <div className="fadeup brand-side"><BrandTile num="" name="First Touch" tag="Gold Covering · Forming · Flagship" desc="The flagship house. Gold covering and traditional forming jewellery. Bridal sets, statement haarams, temple-inspired pieces." accent="#7a3a2a" /></div>
+          <div className="fadeup fadeup-delay-1 brand-hero"><BrandTile num="" name="Swarnika" tag="Temple · American Diamond · The Connoisseur's House" desc="Premium-quality temple jewellery and American diamond pieces. Careful, considered, made to be noticed up close. The centrepiece of the Sumti family." accent="#8a5028" /></div>
+          <div className="fadeup fadeup-delay-2 brand-side"><BrandTile num="" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish." accent="#2c2520" /></div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
@@ -291,26 +274,26 @@ export default function HomePage() {
           position: 'absolute', left: '-15%', top: '50%', transform: 'translateY(-50%)',
           width: 620, height: 620,
           backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-          opacity: .22, pointerEvents: 'none',
+          opacity: .10, pointerEvents: 'none',
         }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
           <div className="sect-head">
             <div className="left">
-              <div className="eyebrow"><span className="snum">N° 03</span> · <span>Who We Serve</span></div>
+              <div className="eyebrow"><span>Who We Serve</span></div>
               <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)', maxWidth: 640 }}>
                 A house <em>for everyone</em><br />in the trade.
               </h2>
             </div>
             <div className="right">
-              <p className="body">From a single counter to a mall pop-up to a woman running her shop from her phone — we supply, we set up, we support.</p>
+              <p className="body">From a single counter to a mall pop-up to a woman running her shop from her phone, we supply, we set up, we support.</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
-            <div className="fadeup"><ServiceCard n="01" title="Retailers" titleEm="& Wholesalers" body="Jewellery shops, multi-brand stores, distributors. Direct from our Chennai branches with the full range of all three houses — catalogue, samples, credit terms, repeat orders." tag="Bulk supply" kind="retailers" /></div>
-            <div className="fadeup fadeup-delay-1"><ServiceCard n="02" title="Shopping Centres" titleEm="& Pop-ups" body="On request, we set up dedicated counters at malls, exhibitions, festive bazaars and shopping centres. We bring the display, the inventory and the staff training — you bring the floor space." tag="On-request setup" kind="centres" /></div>
+            <div className="fadeup"><ServiceCard n="01" title="Retailers" titleEm="& Wholesalers" body="Jewellery shops, multi-brand stores, distributors. Direct from Sowcarpet with the full range of all three houses. Catalogue, samples, credit terms, repeat orders." tag="Bulk supply" kind="retailers" /></div>
+            <div className="fadeup fadeup-delay-1"><ServiceCard n="02" title="Shopping Centres" titleEm="& Pop-ups" body="On request, we set up dedicated counters at malls, exhibitions, festive bazaars and shopping centres. We bring the display, the inventory and the staff training. You bring the floor space." tag="On-request setup" kind="centres" /></div>
             <div className="fadeup fadeup-delay-2"><ServiceCard n="03" title="3,000+ Women" titleEm="Entrepreneurs" body="Our reseller programme empowers more than three thousand women running their own jewellery businesses online. We supply at wholesale rates, share lookbooks, and help them grow." tag="Reseller programme" kind="women" accent /></div>
-            <div className="fadeup fadeup-delay-3"><ServiceCard n="04" title="Walk-in Clients" titleEm="& Bridal Parties" body="All three Chennai branches welcome walk-in bulk buyers and bridal trousseau bookings — by appointment for the bridal floor, open counter for retail-trade." tag="In-branch" kind="walkin" /></div>
+            <div className="fadeup fadeup-delay-3"><ServiceCard n="04" title="Walk-in Clients" titleEm="& Bridal Parties" body="Our Sowcarpet head office welcomes walk-in bulk buyers and bridal trousseau bookings. By appointment for the bridal floor, open counter for retail trade." tag="In-branch" kind="walkin" /></div>
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
@@ -340,7 +323,7 @@ export default function HomePage() {
         <div style={{ position: 'relative' }}>
           <div className="sect-head fadeup">
             <div className="left">
-              <div className="eyebrow"><span className="snum">N° 04</span> · <span>Recent Pieces</span></div>
+              <div className="eyebrow"><span>Recent Pieces</span></div>
               <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
                 The <em>Couverture</em><br />collection.
               </h2>

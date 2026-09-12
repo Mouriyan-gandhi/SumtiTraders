@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919999999999').replace(/\D/g, '')
+const NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919344761821').replace(/\D/g, '')
 const MESSAGE = process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
   'Hello Sumti Traders, I would like to enquire about your wholesale range.'
 

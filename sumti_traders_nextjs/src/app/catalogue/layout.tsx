@@ -4,9 +4,9 @@ import { BreadcrumbJsonLd } from '@/components/JsonLd'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sumtitraders.in'
 
 export const metadata: Metadata = {
-  title: 'Catalogue — Couverture Wholesale Collection · Necklaces, Bangles, Rings',
+  title: 'Catalogue · Couverture Wholesale Collection · Necklaces, Bangles, Rings',
   description:
-    'A curated preview from all three Sumti Traders houses — necklaces, earrings, bangles, maang tikka, rings, bracelets, pendants. Wholesale-only pricing, print catalogue on request.',
+    'A curated preview from all three Sumti Traders houses. Necklaces, earrings, bangles, maang tikka, rings, bracelets, pendants. Wholesale-only pricing, print catalogue on request.',
   keywords: [
     'jewellery catalogue Chennai',
     'wholesale jewellery catalogue India',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/catalogue' },
   openGraph: {
-    title: 'Catalogue — The Couverture Wholesale Collection',
+    title: 'Catalogue · The Couverture Wholesale Collection',
     description: 'Wholesale-only jewellery catalogue across three Sumti houses. Filter by category or house.',
     url: `${SITE_URL}/catalogue`,
     type: 'website',

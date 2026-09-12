@@ -4,9 +4,9 @@ import { BreadcrumbJsonLd } from '@/components/JsonLd'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sumtitraders.in'
 
 export const metadata: Metadata = {
-  title: 'Our Houses — First Touch · Swarnika · FT · Chennai Wholesale',
+  title: 'Our Houses · First Touch · Swarnika · FT · Chennai Wholesale',
   description:
-    'Three brands. Three customers. First Touch for gold covering bridal and forming. Swarnika for premium temple jewellery and American diamond. FT for affordable fashion — all from our Chennai wholesale atelier.',
+    'Three brands. Three customers. First Touch for gold covering bridal and forming. Swarnika for premium temple jewellery and American diamond. FT for affordable fashion. All from our Sowcarpet, Chennai wholesale atelier.',
   keywords: [
     'First Touch jewellery',
     'Swarnika jewellery',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/houses' },
   openGraph: {
-    title: 'Our Houses — First Touch · Swarnika · FT',
-    description: 'Three brands, one wholesale partner. Gold covering, temple, American diamond and fashion jewellery from Chennai.',
+    title: 'Our Houses · First Touch · Swarnika · FT',
+    description: 'Three brands, one wholesale partner. Gold covering, temple, American diamond and fashion jewellery from Sowcarpet, Chennai.',
     url: `${SITE_URL}/houses`,
     type: 'website',
   },
