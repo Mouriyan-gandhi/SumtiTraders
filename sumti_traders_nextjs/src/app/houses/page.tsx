@@ -87,13 +87,6 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
       position: 'relative', overflow: 'hidden',
       scrollMarginTop: 80,
     }}>
-      <div style={{
-        position: 'absolute',
-        [reverse ? 'right' : 'left']: '-15%', top: '50%', transform: 'translateY(-50%)',
-        width: 720, height: 720,
-        backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-        opacity: .25, pointerEvents: 'none',
-      }} aria-hidden="true" />
 
       <div className={`fadeup grid gap-10 md:gap-20 items-center relative ${reverse ? 'grid-cols-1 md:grid-cols-[1fr_1.2fr]' : 'grid-cols-1 md:grid-cols-[1.2fr_1fr]'}`}>
         <div style={{
@@ -183,7 +176,7 @@ function BrandSectionDark({ brand, onOpen }: { brand: Brand; onOpen: () => void 
       position: 'relative', overflow: 'hidden',
       scrollMarginTop: 80,
     }}>
-      <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '780px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />
+<div style={{ position: 'absolute', inset: 0, opacity: .04, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '780px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />
       <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-10 md:gap-20 items-center">
         <div style={{ textAlign: 'center' }}>
           <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.32em' }}>The Connoisseur&apos;s House</div>
@@ -399,12 +392,12 @@ export default function HousesPage() {
         position: 'relative', overflow: 'hidden',
       }} className="bg-marble">
         <div style={{
-          position: 'absolute', right: '-10%', top: '-20%',
-          width: '700px', height: '700px',
-          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', opacity: .4,
+          position: 'absolute', right: '-16%', top: '-24%',
+          width: '620px', height: '620px',
+          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', opacity: .08,
         }} aria-hidden="true" />
         <div className="fadeup relative" style={{ maxWidth: 960 }}>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Three Houses</span></div>
+          <div className="lead-eyebrow">Our Three Houses</div>
           <h1 className="display" style={{ fontSize: 'clamp(44px, 7vw, 100px)', lineHeight: 0.94, marginTop: 16 }}>
             Three <em>brands.</em><br />Three customers.
           </h1>
@@ -425,10 +418,6 @@ export default function HousesPage() {
         padding: 'clamp(50px, 6vw, 90px) clamp(22px, 4vw, 60px)',
         textAlign: 'center', position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0, opacity: .06,
-          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '700px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
-        }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
           <div className="eyebrow" style={{ color: 'var(--cream-deep)' }}>Sumti Traders · Parent house</div>
           <h2 className="display" style={{ fontSize: 'clamp(32px, 4vw, 56px)', marginTop: 14, lineHeight: 1 }}>

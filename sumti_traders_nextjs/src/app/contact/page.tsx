@@ -288,14 +288,9 @@ export default function ContactPage() {
         background: 'var(--cream-paper)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute', right: '-15%', top: '-20%',
-          width: '700px', height: '700px',
-          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', opacity: .12,
-        }} aria-hidden="true" />
         <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-8 md:gap-14 items-end">
           <div>
-            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Visit · Write · Order</span></div>
+            <div className="lead-eyebrow">Visit · Write · Order</div>
             <h1 className="display" style={{ fontSize: 'clamp(46px, 7vw, 108px)', lineHeight: 0.92, marginTop: 16 }}>
               One address.<br /><em>Everything</em> Sumti.
             </h1>
@@ -428,7 +423,6 @@ export default function ContactPage() {
         position: 'relative',
         scrollMarginTop: 80,
       }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px' }} aria-hidden="true" />
         <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-[60px]">
           <div>
             <div className="eyebrow"><span>Wholesale Enquiry</span></div>

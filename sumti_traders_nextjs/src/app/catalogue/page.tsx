@@ -86,7 +86,7 @@ export default function CataloguePage() {
       }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .08 }} aria-hidden="true" />
         <div className="fadeup relative" style={{ maxWidth: 960 }}>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>The Couverture Collection</span></div>
+          <div className="lead-eyebrow">The Couverture Collection</div>
           <h1 className="display" style={{ fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: 0.92, marginTop: 16, maxWidth: '15ch' }}>
             The <em>Couverture</em> catalogue.
           </h1>

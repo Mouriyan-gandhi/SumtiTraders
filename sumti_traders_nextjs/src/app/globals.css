@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Pinyon+Script&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* =========================================================
-   SUMTI TRADERS — Cream Design System
+   SUMTI TRADERS · Sowcarpet Design System
+   Two typefaces, warm cream base, rust + gold accents.
    ========================================================= */
 
 :root {
@@ -19,17 +20,22 @@
   --ink-soft:    #3a322a;
   --ink-muted:   #6b5e4f;
 
-  /* Gold foil — used as hairlines only */
+  /* Gold foil */
   --gold:        #8a6d2a;
   --gold-soft:   #a3863f;
+
+  /* Rust (First Touch) — primary CTA / accent everywhere. */
+  --rust:        #7a3a2a;
+  --rust-soft:   #9b4a34;
+  --rust-wash:   #f0dac7;
 
   /* Maroon whisper for jewellery shadow */
   --burgundy:    #3a1820;
 
-  /* type */
+  /* type — TWO families only. Italiana + Pinyon removed. */
   --f-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
-  --f-thin:    "Italiana", "Cormorant Garamond", serif;
-  --f-script:  "Pinyon Script", "Tangerine", cursive;
+  --f-thin:    "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --f-script:  "Cormorant Garamond", "EB Garamond", Georgia, serif;
   --f-body:    "Manrope", "Helvetica Neue", Arial, sans-serif;
   --f-caps:    "Manrope", sans-serif;
 }
@@ -99,20 +105,22 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 12px;
   padding: 14px 22px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--rust);
   border-radius: 0;
   font-family: var(--f-caps);
   font-size: 11px;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--rust);
   background: transparent;
-  transition: all .35s ease;
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
   cursor: pointer;
 }
-.btn:hover { background: var(--ink); color: var(--cream-paper); }
-.btn.solid { background: var(--ink); color: var(--cream-paper); }
-.btn.solid:hover { background: var(--cream-paper); color: var(--ink); }
+.btn:hover { background: var(--rust); color: var(--cream-paper); }
+.btn.solid { background: var(--rust); color: var(--cream-paper); border-color: var(--rust); }
+.btn.solid:hover { background: var(--ink); border-color: var(--ink); color: var(--cream-paper); }
+.btn.ghost { border-color: var(--ink-soft); color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--cream-paper); }
 .btn .arr { font-family: var(--f-display); font-size: 18px; line-height: 0; transform: translateY(-1px); }
 
 .chip {
@@ -692,44 +700,72 @@ main.page-enter {
 }
 .spin-slow { animation: spin 240s linear infinite; }
 
-/* About hero photo frame — placeholder + corner marks */
-.about-hero-photo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.about-hero-photo-frame {
+/* About hero — full-bleed photograph left, copy right. */
+.about-hero {
   position: relative;
-  aspect-ratio: 4 / 5;
-  width: clamp(240px, 30vw, 380px);
-  background: linear-gradient(180deg, #efe1be 0%, #e6d4a8 100%);
-  border: 1px solid rgba(138, 109, 42, 0.35);
+  background: var(--cream-paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: clamp(520px, 78vh, 720px);
   overflow: hidden;
 }
-.about-hero-photo-frame img { position: absolute; inset: 0; }
-.about-hero-photo-corner { z-index: 2; }
-.about-hero-photo-corner {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: rgba(58, 24, 32, 0.4);
-  border-style: solid;
-  border-width: 0;
+.about-hero-media {
+  position: relative;
+  background: var(--cream-warm);
+  min-height: 320px;
+  overflow: hidden;
 }
-.about-hero-photo-corner.tl { top: 10px; left: 10px; border-top-width: 1px; border-left-width: 1px; }
-.about-hero-photo-corner.tr { top: 10px; right: 10px; border-top-width: 1px; border-right-width: 1px; }
-.about-hero-photo-corner.bl { bottom: 10px; left: 10px; border-bottom-width: 1px; border-left-width: 1px; }
-.about-hero-photo-corner.br { bottom: 10px; right: 10px; border-bottom-width: 1px; border-right-width: 1px; }
-.about-hero-photo-inner {
+.about-hero-media::after {
+  content: '';
   position: absolute;
   inset: 0;
+  background: linear-gradient(180deg, rgba(26,22,18,0) 55%, rgba(26,22,18,.6) 100%);
+  pointer-events: none;
+}
+.about-hero-media-caption {
+  position: absolute;
+  left: clamp(20px, 3vw, 40px);
+  right: clamp(20px, 3vw, 40px);
+  bottom: clamp(18px, 2.6vw, 32px);
+  z-index: 2;
+  color: var(--cream-paper);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.about-hero-copy {
+  padding: clamp(48px, 6vw, 92px) clamp(22px, 4vw, 72px);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 24px;
-  text-align: center;
+  background: var(--cream-paper);
+}
+
+/* Hairline-lead eyebrow used site-wide. Replaces TinyDiamond. */
+.lead-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-caps);
+  font-size: 11px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+.lead-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: .75;
+}
+.lead-eyebrow.on-dark { color: var(--cream-deep); }
+@media (max-width: 900px) {
+  .about-hero { grid-template-columns: 1fr; }
+  .about-hero-media { aspect-ratio: 4 / 5; min-height: 0; }
+  .about-hero-copy { padding-top: 40px; }
 }
 
 /* Legacy band — editorial intro + stat row */

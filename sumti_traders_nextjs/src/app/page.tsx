@@ -135,50 +135,47 @@ export default function HomePage() {
         minHeight: '760px',
         overflow: 'hidden',
       }} className="bg-marble">
-        {/* spinning mandala */}
+        {/* spinning mandala — only decorative element in hero */}
         <div style={{
-          position: 'absolute', right: '-18%', top: '-22%',
-          width: '900px', height: '900px',
+          position: 'absolute', right: '-22%', top: '-25%',
+          width: '760px', height: '760px',
           backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-          opacity: .16, pointerEvents: 'none',
+          opacity: .10, pointerEvents: 'none',
           animation: 'spin 240s linear infinite',
         }} aria-hidden="true" />
 
-        <div className="fadeup" style={{ position: 'relative', zIndex: 2 }}>
-          {/* chips */}
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 36, flexWrap: 'wrap' }}>
-            <span className="chip">Sowcarpet · Chennai</span>
-            <span className="chip">Wholesale since 1970</span>
-            <span className="chip">10,000+ Retail Partners</span>
-          </div>
+        <div className="fadeup" style={{ position: 'relative', zIndex: 2, maxWidth: 1180 }}>
+          <div className="lead-eyebrow" style={{ marginBottom: 28 }}>Sowcarpet, Chennai · Since 1970</div>
 
           {/* type lockup */}
           <h1 className="display" style={{
-            fontSize: 'clamp(54px, 10vw, 156px)',
+            fontSize: 'clamp(54px, 10vw, 148px)',
             letterSpacing: '-0.02em',
             lineHeight: '0.88',
+            maxWidth: '15ch',
           }}>
             <span style={{ display: 'block' }}>Sumti</span>
-            <span style={{ display: 'block', paddingLeft: 'clamp(0px, 8vw, 120px)' }}>
+            <span style={{ display: 'block', paddingLeft: 'clamp(0px, 6vw, 90px)' }}>
               <em style={{ fontStyle: 'italic' }}>Traders</em>
-              <span className="script hidden md:inline-block" style={{
-                fontSize: '64px', color: 'var(--gold)', marginLeft: 28,
-                verticalAlign: '0.55em', transform: 'rotate(-6deg)', display: 'inline-block'
-              }}>since&nbsp;1970</span>
             </span>
           </h1>
-          <div className="script md:hidden" style={{ fontSize: 36, color: 'var(--gold)', marginTop: 8 }}>since 1970</div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 50, flexWrap: 'wrap' }}>
-            <div style={{ flex: 'none', maxWidth: 360 }}>
-              <p className="thin" style={{ fontSize: 22, lineHeight: 1.35, color: 'var(--ink-soft)', fontStyle: 'italic' }}>
-                Gold covering jewellery from Chennai. Three houses, one trust. Empowering 10,000+ retail partners across India.
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: 30, alignItems: 'end', marginTop: 42 }}>
+            <div style={{ maxWidth: 440 }}>
+              <p className="thin" style={{ fontSize: 'clamp(19px, 1.6vw, 24px)', lineHeight: 1.4, color: 'var(--ink)', fontStyle: 'italic' }}>
+                Wholesale gold covering jewellery from a Sowcarpet workbench. Three houses, ten thousand retailers, one <em style={{ color: 'var(--rust)' }}>standard of finish.</em>
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 10, marginLeft: 'auto' }}>
-              <Link href="/catalogue" className="btn solid">View Collection <span className="arr">→</span></Link>
-              <Link href="/about" className="btn">Our Legacy</Link>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <Link href="/contact#wholesale" className="btn solid">Open an account <span className="arr">→</span></Link>
+              <Link href="/catalogue" className="btn">View catalogue</Link>
             </div>
+          </div>
+
+          <div style={{ marginTop: 42, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
+            <span className="chip">GST-registered wholesaler</span>
+            <span className="chip">Ships pan-India</span>
+            <span className="chip">3,000+ women resellers</span>
           </div>
         </div>
 
@@ -190,8 +187,8 @@ export default function HomePage() {
             fontFamily: 'var(--f-caps)', fontSize: 10, letterSpacing: '.24em',
             textTransform: 'uppercase', color: 'var(--ink-muted)',
           }}>
-            <span>Scroll · Begin the journey</span>
-            <span>Couverture Collection</span>
+            <span>Scroll to begin</span>
+            <span>The Couverture Collection</span>
             <span>↓</span>
           </div>
         </div>
@@ -204,9 +201,7 @@ export default function HomePage() {
         background: 'var(--cream-warm)',
       }}>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1200, margin: '0 auto' }}>
-          <div className="eyebrow fadeup" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
-            <TinyDiamond /> <span>The House · Since 1970</span>
-          </div>
+          <div className="lead-eyebrow fadeup" style={{ marginBottom: 22 }}>The House · Since 1970</div>
 
           <div className="fadeup fadeup-delay-1 legacy-intro">
             <h2 className="display legacy-headline">
@@ -270,12 +265,6 @@ export default function HomePage() {
         background: 'var(--cream-warm)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute', left: '-15%', top: '50%', transform: 'translateY(-50%)',
-          width: 620, height: 620,
-          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-          opacity: .10, pointerEvents: 'none',
-        }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
           <div className="sect-head">
             <div className="left">
@@ -303,6 +292,53 @@ export default function HomePage() {
       </section>
 
       {/* MARQUEE — sits as transition between Who We Serve and Recent Pieces */}
+      {/* HOW WHOLESALE WORKS — the practical band. Three steps. */}
+      <section style={{
+        padding: 'clamp(60px, 8vw, 110px) clamp(22px, 4vw, 60px)',
+        background: 'var(--cream-paper)',
+        borderTop: '1px solid rgba(138,109,42,.18)',
+        borderBottom: '1px solid rgba(138,109,42,.18)',
+      }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div className="fadeup" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20, marginBottom: 44 }}>
+            <div>
+              <div style={{ height: 1, background: 'linear-gradient(90deg, var(--rust), rgba(122,58,42,0))', maxWidth: 220, marginBottom: 16 }} />
+              <div className="eyebrow" style={{ color: 'var(--rust)', letterSpacing: '.32em' }}>Wholesale, made simple</div>
+              <h2 className="display" style={{ fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.05, marginTop: 14, maxWidth: '18ch' }}>
+                From your first enquiry to your <em>first shipment.</em>
+              </h2>
+            </div>
+            <div style={{ maxWidth: 360 }}>
+              <p className="body" style={{ color: 'var(--ink-soft)', fontSize: 14, lineHeight: 1.75 }}>Three concrete steps. A wholesale account with GST, an order on WhatsApp or in the branch, and pan-India dispatch. That is the whole flow.</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+            {[
+              { n: '01', t: 'Open an account', d: 'Send us your shop details, GST number, and a photo of your storefront. Approved within forty-eight hours. No franchise fee, no annual minimum.' },
+              { n: '02', t: 'Order your way', d: 'Walk in to Sowcarpet, message on WhatsApp with a piece reference, or send a purchase order by email. Whatever fits your day.' },
+              { n: '03', t: 'Ship pan-India', d: 'Packed at our Sowcarpet warehouse, dispatched by trusted courier. Most metros in two days, tier-2 and tier-3 in three to five.' },
+            ].map((s, i) => (
+              <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
+                padding: '30px 28px',
+                background: 'var(--cream-base)',
+                borderTop: '2px solid var(--rust)',
+                position: 'relative',
+              }}>
+                <div style={{ fontFamily: 'var(--f-display)', fontStyle: 'italic', fontSize: 52, color: 'var(--rust)', lineHeight: 1, letterSpacing: '-0.02em' }}>{s.n}</div>
+                <h3 className="display" style={{ fontSize: 24, lineHeight: 1.1, marginTop: 14 }}>{s.t}</h3>
+                <p className="body-sm" style={{ marginTop: 12, color: 'var(--ink-soft)', fontSize: 13, lineHeight: 1.65 }}>{s.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 40, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/contact#wholesale" className="btn solid">Open a wholesale account <span className="arr">→</span></Link>
+            <a href="https://wa.me/919344761821" target="_blank" rel="noopener noreferrer" className="btn ghost">WhatsApp our desk <span className="arr">→</span></a>
+          </div>
+        </div>
+      </section>
+
       <section className="marquee" aria-hidden="true">
         <div className="marquee-track">
           <span>Necklaces <TinyDiamond /> Earrings <TinyDiamond /> Bangles <TinyDiamond /> Maang Tikka <TinyDiamond /> Rings <TinyDiamond /> Nose Pins <TinyDiamond /> Anklets <TinyDiamond /> Bracelets <TinyDiamond /> Bridal Sets <TinyDiamond /></span>
@@ -316,10 +352,6 @@ export default function HomePage() {
         background: 'var(--cream-base)',
         position: 'relative',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .18, pointerEvents: 'none',
-        }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
           <div className="sect-head fadeup">
             <div className="left">
@@ -350,26 +382,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* QUOTE */}
+      {/* RETAILER VOICE */}
       <section style={{
-        padding: 'clamp(50px, 6vw, 90px) clamp(22px, 4vw, 60px)',
+        padding: 'clamp(56px, 7vw, 100px) clamp(22px, 4vw, 60px)',
         background: 'var(--ink)', color: 'var(--cream-paper)',
-        textAlign: 'center', position: 'relative', overflow: 'hidden',
+        textAlign: 'center', position: 'relative',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '600px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
-          opacity: .08,
-        }} aria-hidden="true" />
-        <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto' }}>
-          <div style={{ color: 'var(--gold)', fontFamily: 'var(--f-display)', fontSize: 64, fontStyle: 'italic', lineHeight: '0.4' }}>&ldquo;</div>
-          <p className="display" style={{ fontSize: 'clamp(26px, 4vw, 42px)', lineHeight: 1.25, marginTop: 18, fontStyle: 'italic' }}>
-            A bride does not know the difference between gold and craft. She only knows whether it feels <em>like hers.</em>
+        <div style={{ position: 'relative', maxWidth: 780, margin: '0 auto' }}>
+          <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.34em', marginBottom: 22 }}>What our retailers say</div>
+          <p className="display" style={{ fontSize: 'clamp(26px, 4vw, 42px)', lineHeight: 1.28, fontStyle: 'italic', color: 'var(--cream-paper)' }}>
+            &ldquo;We&apos;ve bought from Sumti every year since my father opened our shop in 1994. The <em>finish has never changed.</em> That&apos;s the sentence.&rdquo;
           </p>
-          <div style={{ marginTop: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
-            <span style={{ width: 32, height: 1, background: 'var(--cream-deep)', display: 'block' }} />
-            <span style={{ fontFamily: 'var(--f-caps)', fontSize: 11, letterSpacing: '.26em', textTransform: 'uppercase', color: 'var(--cream-deep)' }}>The Atelier Notebook · Sumti Traders</span>
-            <span style={{ width: 32, height: 1, background: 'var(--cream-deep)', display: 'block' }} />
+          <div style={{ marginTop: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+            <span style={{ width: 32, height: 1, background: 'var(--cream-deep)' }} />
+            <span style={{ fontFamily: 'var(--f-caps)', fontSize: 11, letterSpacing: '.26em', textTransform: 'uppercase', color: 'var(--cream-deep)' }}>Retailer · Coimbatore · 30 years with Sumti</span>
+            <span style={{ width: 32, height: 1, background: 'var(--cream-deep)' }} />
           </div>
         </div>
       </section>

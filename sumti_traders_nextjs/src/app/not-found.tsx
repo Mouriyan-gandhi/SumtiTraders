@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import SiteLayout from '@/components/SiteLayout'
-import { Ornament, TinyDiamond } from '@/components/Patterns'
+import { Ornament } from '@/components/Patterns'
 
 export const metadata = {
   title: 'Not found · Sumti Traders',
@@ -22,14 +22,11 @@ export default function NotFound() {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .18, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px' }} aria-hidden="true" />
         <div style={{ position: 'relative', maxWidth: 560 }}>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Ornament size={90} />
+            <Ornament size={80} />
           </div>
-          <div className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 20 }}>
-            <TinyDiamond />&nbsp;<span>404 · Off the ledger</span>
-          </div>
+          <div className="lead-eyebrow" style={{ marginTop: 22 }}>404 · Off the ledger</div>
           <h1 className="display" style={{ fontSize: 'clamp(56px, 8vw, 108px)', lineHeight: 0.9, marginTop: 18 }}>
             This piece is <em>not on the shelf.</em>
           </h1>

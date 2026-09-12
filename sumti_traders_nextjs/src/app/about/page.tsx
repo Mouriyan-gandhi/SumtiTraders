@@ -38,48 +38,40 @@ const TIMELINE = [
 export default function AboutPage() {
   return (
     <SiteLayout>
-      {/* HERO + INTRO — single composition */}
-      <section style={{
-        padding: 'clamp(48px, 6vw, 88px) clamp(22px, 4vw, 60px) clamp(56px, 7vw, 96px)',
-        position: 'relative', overflow: 'hidden',
-        background: 'var(--cream-paper)',
-      }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .18, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px' }} aria-hidden="true" />
-
-        <div className="relative grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-10 md:gap-16 items-center">
-          <div className="fadeup">
-            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Story · Since 1970</span></div>
-            <h1 className="display" style={{ fontSize: 'clamp(48px, 7vw, 108px)', lineHeight: 0.9, marginTop: 16 }}>
-              A heritage<br />of <em>trust.</em>
-            </h1>
-            <p className="thin" style={{ fontSize: 'clamp(20px, 2vw, 26px)', fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)', marginTop: 28, maxWidth: 520 }}>
-              Sumti Traders began on a single counter in Sowcarpet, Chennai. One workbench, one ledger, a few hundred designs.
-            </p>
-            <p className="body" style={{ marginTop: 20, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
-              More than five decades on, what began as a single counter has grown into a three-house operation empowering over ten thousand retail partners across India. The principle has not changed. We make gold covering jewellery the way it ought to be made: finished by people who can tell the right curve from a curve that is almost right.
-            </p>
-            <p className="body" style={{ marginTop: 14, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
-              Our three houses reach retailers in every corner of the country from our Chennai head office. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch</em> for gold covering and forming. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>Swarnika</em> for premium temple and American diamond. <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>FT</em> for affordable fashion.
-            </p>
+      {/* HERO — photograph-anchored */}
+      <section className="about-hero">
+        <div className="about-hero-media">
+          <Image
+            src="/photos/about-shop.jpeg"
+            alt="Sumti Traders shop in Sowcarpet, Chennai"
+            fill
+            sizes="(max-width: 900px) 100vw, 46vw"
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+          <div className="about-hero-media-caption">
+            <span style={{ fontFamily: 'var(--f-display)', fontStyle: 'italic', fontSize: 18 }}>The shop.</span>
+            <span style={{ fontFamily: 'var(--f-caps)', fontSize: 10, letterSpacing: '.3em', textTransform: 'uppercase', marginLeft: 12, color: 'var(--cream-deep)' }}>Perumal Mudali Street · Sowcarpet</span>
           </div>
+        </div>
 
-          <div className="fadeup fadeup-delay-1 about-hero-photo">
-            <div className="about-hero-photo-frame">
-              <div className="about-hero-photo-corner tl" />
-              <div className="about-hero-photo-corner tr" />
-              <div className="about-hero-photo-corner bl" />
-              <div className="about-hero-photo-corner br" />
-              <Image
-                src="/photos/about-shop.jpeg"
-                alt="Sumti Traders shop in Sowcarpet, Chennai"
-                fill
-                sizes="(max-width: 768px) 80vw, 380px"
-                style={{ objectFit: 'cover' }}
-                priority
-              />
-            </div>
-            <div className="body-sm" style={{ marginTop: 14, color: 'var(--ink-muted)', letterSpacing: '.18em', fontSize: 10, textTransform: 'uppercase' }}>Sowcarpet · Chennai</div>
-          </div>
+        <div className="about-hero-copy fadeup">
+          <div className="eyebrow" style={{ color: 'var(--rust)', letterSpacing: '.32em' }}>Our Story · Since 1970</div>
+          <h1 className="display" style={{ fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: 0.94, marginTop: 18, letterSpacing: '-0.01em' }}>
+            A heritage<br />of <em>trust.</em>
+          </h1>
+          <p className="thin" style={{ fontSize: 'clamp(18px, 1.8vw, 24px)', fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)', marginTop: 26, maxWidth: 520 }}>
+            Sumti Traders began on a single counter in Sowcarpet. One workbench, one ledger, a few hundred designs.
+          </p>
+          <p className="body" style={{ marginTop: 22, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
+            Fifty-five years on, that counter has become a family of three houses supplying more than ten thousand retail partners across India. The principle has not changed. We make gold covering jewellery the way it ought to be made, finished by karigars who can tell the right curve from one that is almost right.
+          </p>
+          <p className="body" style={{ marginTop: 14, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
+            Three houses reach every corner of the country from Perumal Mudali Street.
+            <em style={{ color: 'var(--rust)' }}> First Touch</em> for gold covering and forming.
+            <em style={{ color: 'var(--rust)' }}> Swarnika</em> for premium temple and American diamond.
+            <em style={{ color: 'var(--rust)' }}> FT</em> for affordable fashion.
+          </p>
         </div>
       </section>
 
@@ -133,7 +125,6 @@ export default function AboutPage() {
         background: 'var(--cream-paper)',
         position: 'relative',
       }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: '700px', backgroundPosition: 'right -200px center', backgroundRepeat: 'no-repeat', opacity: .15, pointerEvents: 'none' }} aria-hidden="true" />
 
         <div className="sect-head" style={{ position: 'relative' }}>
           <div className="left">
@@ -169,11 +160,6 @@ export default function AboutPage() {
         background: 'var(--cream-warm)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute', right: '-10%', top: '-15%',
-          width: 580, height: 580,
-          backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .3, pointerEvents: 'none',
-        }} aria-hidden="true" />
         <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-[70px] items-center">
           <div>
             <div className="eyebrow"><span>The Reseller Programme</span></div>
@@ -205,7 +191,6 @@ export default function AboutPage() {
         background: 'var(--ink)', color: 'var(--cream-paper)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '280px' }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
           <div style={{ height: 1, background: 'linear-gradient(90deg, rgba(163,134,63,.5), rgba(163,134,63,0))', maxWidth: 220, marginBottom: 18 }} />
           <div className="eyebrow" style={{ color: 'var(--cream-deep)', letterSpacing: '.32em', marginBottom: 32 }}>
