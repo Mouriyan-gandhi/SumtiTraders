@@ -11,21 +11,33 @@ import JewelCardSkeleton from '@/components/JewelCardSkeleton'
 
 /* ====== Brand tile ====== */
 const BrandTile = ({
-  num, name, tag, desc, accent
+  href, logo, name, tag, desc, accent
 }: {
-  num?: string; name: string; tag: string; desc: string; accent: string;
+  href: string; logo: string; name: string; tag: string; desc: string; accent: string;
 }) => {
   return (
-    <Link href="/houses" className="brand-card" style={{ background: 'var(--cream-paper)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textDecoration: 'none' }}>
-      <div className="bgwash" style={{ background: `radial-gradient(circle at 80% 80%, ${accent}11 0%, transparent 60%), var(--cream-paper)` }} aria-hidden="true" />
-      <div className="inner">
-        <h3>
-          {name.split(' ').map((w, i) => i === 0 ? <span key={i}>{w} </span> : <em key={i}>{w}</em>)}
-        </h3>
-        <div className="tag">{tag}</div>
+    <Link href={href} className="brand-card" style={{
+      background: 'var(--cream-paper)', display: 'flex', flexDirection: 'column',
+      textDecoration: 'none',
+      borderTop: `2px solid ${accent}`,
+    }}>
+      <div className="bgwash" style={{ background: `radial-gradient(circle at 80% 80%, ${accent}12 0%, transparent 60%), var(--cream-paper)` }} aria-hidden="true" />
+      <div className="inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 20 }}>
+        <div style={{ height: 76, display: 'flex', alignItems: 'center' }}>
+          <Image
+            src={logo}
+            alt={name}
+            width={220}
+            height={80}
+            style={{ height: 76, width: 'auto', maxWidth: 200, objectFit: 'contain' }}
+          />
+        </div>
+        <div className="tag" style={{ color: accent }}>{tag}</div>
       </div>
-      <p className="desc">{desc}</p>
-      <div className="cta">Discover the house <span style={{ fontFamily: 'var(--f-display)', fontSize: 22 }}>→</span></div>
+      <p className="desc" style={{ marginTop: 8 }}>{desc}</p>
+      <div className="cta" style={{ color: accent, marginTop: 22 }}>
+        Discover the house <span style={{ fontFamily: 'var(--f-display)', fontSize: 22 }}>→</span>
+      </div>
     </Link>
   )
 }
@@ -249,9 +261,9 @@ export default function HomePage() {
         </div>
 
         <div className="brand-tri-grid mt-6">
-          <div className="fadeup brand-side"><BrandTile num="" name="First Touch" tag="Gold Covering · Forming · Flagship" desc="The flagship house. Gold covering and traditional forming jewellery. Bridal sets, statement haarams, temple-inspired pieces." accent="#7a3a2a" /></div>
-          <div className="fadeup fadeup-delay-1 brand-hero"><BrandTile num="" name="Swarnika" tag="Temple · American Diamond · The Connoisseur's House" desc="Premium-quality temple jewellery and American diamond pieces. Careful, considered, made to be noticed up close. The centrepiece of the Sumti family." accent="#8a5028" /></div>
-          <div className="fadeup fadeup-delay-2 brand-side"><BrandTile num="" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish." accent="#2c2520" /></div>
+          <div className="fadeup brand-side"><BrandTile href="/houses#firsttouch" logo="/logos/firsttouch-brown.png" name="First Touch" tag="Gold Covering · Forming · Flagship" desc="The flagship house. Gold covering and traditional forming jewellery. Bridal sets, statement haarams, temple-inspired pieces." accent="#7a3a2a" /></div>
+          <div className="fadeup fadeup-delay-1 brand-hero"><BrandTile href="/houses#swarnika" logo="/logos/swarnika-brown.png" name="Swarnika" tag="Temple · American Diamond · The Connoisseur's House" desc="Premium-quality temple jewellery and American diamond pieces. Careful, considered, made to be noticed up close. The centrepiece of the Sumti family." accent="#8a5028" /></div>
+          <div className="fadeup fadeup-delay-2 brand-side"><BrandTile href="/houses#ft" logo="/logos/ft-brown.png" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish." accent="#2c2520" /></div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>

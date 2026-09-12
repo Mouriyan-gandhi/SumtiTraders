@@ -349,63 +349,40 @@ export default function ContactPage() {
             return (
               <div key={u.id} id={u.id} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
                 background: isBranch ? 'var(--cream-paper)' : 'var(--cream-warm)',
-                padding: 36,
+                padding: '36px 34px',
                 border: `1px solid rgba(138,109,42,${isBranch ? '.28' : '.18'})`,
                 position: 'relative',
-                minHeight: 320,
                 scrollMarginTop: 80,
+                display: 'flex', flexDirection: 'column',
               }}>
-                <div style={{ position: 'absolute', top: 18, right: 18, opacity: .45 }} aria-hidden="true">
-                  <Ornament size={60} />
-                </div>
-
-                <div className="thin" style={{ fontSize: 12, color: 'var(--gold)', letterSpacing: '.3em', textTransform: 'uppercase' }}>{isBranch ? 'Head Office' : 'Warehouse'}</div>
-                <h3 className="display" style={{ fontSize: 30, marginTop: 14, lineHeight: 1.05 }}>
+                <div className="eyebrow" style={{ color: 'var(--rust)', letterSpacing: '.3em', fontSize: 10 }}>{isBranch ? 'Head Office · Since ' + u.estd : u.estd}</div>
+                <h3 className="display" style={{ fontSize: isBranch ? 32 : 26, marginTop: 10, lineHeight: 1.05 }}>
                   {u.name.split(' ').map((w, wi, arr) =>
                     wi === arr.length - 1 ? <em key={wi}>{w}</em> : <span key={wi}>{w} </span>
                   )}
                 </h3>
-                <p className="thin" style={{ fontSize: 15, fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 4 }}>{u.sub}</p>
+                <p className="body-sm" style={{ marginTop: 6, color: 'var(--ink-muted)', fontSize: 12 }}>{u.sub}</p>
 
-                <Divider />
+                <p className="body-sm" style={{ marginTop: 22, whiteSpace: 'pre-line', lineHeight: 1.55, color: 'var(--ink-soft)' }}>{u.addr}</p>
 
-                <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  <div>
-                    <div className="eyebrow" style={{ fontSize: 9 }}>Address</div>
-                    <p className="body-sm" style={{ marginTop: 4, whiteSpace: 'pre-line', lineHeight: 1.55 }}>{u.addr}</p>
-                  </div>
-                  {isBranch && (
-                    <>
-                      <div>
-                        <div className="eyebrow" style={{ fontSize: 9 }}>WhatsApp</div>
-                        <a href={`https://wa.me/${WHOLESALE_WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer" className="display" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 17, marginTop: 4, fontStyle: 'italic', color: 'var(--ink)' }}>
-                          <WhatsAppGlyph color="#1a1612" /> {WHOLESALE_WHATSAPP_DISPLAY}
-                        </a>
-                      </div>
-                      <div>
-                        <div className="eyebrow" style={{ fontSize: 9 }}>Hours</div>
-                        <p className="body-sm" style={{ marginTop: 4 }}>{u.hours}</p>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                <div style={{ marginTop: 20, padding: '12px 14px', background: isBranch ? 'var(--cream-warm)' : 'var(--cream-paper)', borderLeft: '2px solid var(--gold)' }}>
-                  <p className="thin" style={{ fontSize: 13, fontStyle: 'italic', color: 'var(--ink-soft)' }}>{u.note}</p>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, gap: 12, flexWrap: 'wrap' }}>
-                  <span className="chip">{u.estd}</span>
-                  <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                    {u.listingUrl && (
-                      <a href={u.listingUrl} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ color: 'var(--gold)', cursor: 'pointer', textDecoration: 'none', fontSize: 10 }}>
-                        Google listing →
-                      </a>
-                    )}
-                    <a href={u.mapsUrl} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ color: 'var(--ink)', cursor: 'pointer', textDecoration: 'none', fontSize: 10 }}>
-                      Directions →
+                {isBranch && (
+                  <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(138,109,42,.2)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    <a href={`https://wa.me/${WHOLESALE_WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontStyle: 'italic', fontFamily: 'var(--f-display)', color: 'var(--ink)' }}>
+                      <WhatsAppGlyph color="#1a1612" /> {WHOLESALE_WHATSAPP_DISPLAY}
                     </a>
+                    <span className="body-sm" style={{ fontSize: 12, color: 'var(--ink-muted)' }}>{u.hours}</span>
                   </div>
+                )}
+
+                <div style={{ marginTop: 'auto', paddingTop: 24, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                  {u.listingUrl && (
+                    <a href={u.listingUrl} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ color: 'var(--rust)', textDecoration: 'none', fontSize: 10 }}>
+                      Google listing →
+                    </a>
+                  )}
+                  <a href={u.mapsUrl} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ color: 'var(--ink)', textDecoration: 'none', fontSize: 10 }}>
+                    Directions →
+                  </a>
                 </div>
               </div>
             )

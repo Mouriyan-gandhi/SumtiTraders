@@ -129,19 +129,7 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
           </h2>
           <p className="body" style={{ marginTop: 22, maxWidth: 460, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
 
-          {brand.instagram && (
-            <a href={brand.instagram} target="_blank" rel="noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 18, color: brand.color, fontSize: 10, letterSpacing: '.24em' }}>
-              <InstagramGlyph color={brand.color} /> On Instagram
-            </a>
-          )}
-
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 22 }}>
-            {brand.pillars.map(p => (
-              <span key={p} className="chip" style={{ borderColor: `${brand.color}55`, color: brand.color }}>{p}</span>
-            ))}
-          </div>
-
-          <div style={{ display: 'flex', gap: 36, marginTop: 32, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 36, marginTop: 30, flexWrap: 'wrap' }}>
             {brand.stats.map(([n, l], idx) => (
               <div key={idx} style={{ borderTop: `1px solid ${brand.color}55`, paddingTop: 12, minWidth: 100 }}>
                 <div className="display" style={{ fontSize: 28, color: brand.color }}>{n}</div>
@@ -150,15 +138,20 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
             ))}
           </div>
 
-          <div style={{ marginTop: 30, padding: '18px 24px', borderLeft: `2px solid ${brand.color}`, background: 'rgba(255,255,255,.4)' }}>
-            <p className="thin" style={{ fontStyle: 'italic', fontSize: 18, lineHeight: 1.35, color: 'var(--ink)' }}>
-              &ldquo; {brand.quote} &rdquo;
-            </p>
+          <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 32, flexWrap: 'wrap' }}>
+            <button
+              className="btn brand"
+              style={{ ['--btn-brand-color' as string]: brand.color } as React.CSSProperties}
+              onClick={onOpen}
+            >
+              Inside the house <span className="arr">→</span>
+            </button>
+            {brand.instagram && (
+              <a href={brand.instagram} target="_blank" rel="noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: brand.color, fontSize: 10, letterSpacing: '.24em' }}>
+                <InstagramGlyph color={brand.color} /> On Instagram
+              </a>
+            )}
           </div>
-
-          <button className="btn" style={{ marginTop: 28, borderColor: brand.color, color: brand.color }} onClick={onOpen}>
-            Inside the house <span className="arr">→</span>
-          </button>
         </div>
       </div>
     </section>
@@ -210,7 +203,7 @@ function BrandSectionDark({ brand, onOpen }: { brand: Brand; onOpen: () => void 
           </div>
 
           <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 30, flexWrap: 'wrap' }}>
-            <button className="btn" style={{ borderColor: 'var(--cream-paper)', color: 'var(--cream-paper)' }} onClick={onOpen}>
+            <button className="btn on-dark" onClick={onOpen}>
               Inside the house <span className="arr">→</span>
             </button>
             {brand.instagram && (
@@ -250,14 +243,13 @@ function BrandSectionStrip({ brand, onOpen }: { brand: Brand; onOpen: () => void
           <div style={{ marginTop: 16, display: 'flex', alignItems: 'flex-end', gap: 10 }}>
             <Image src={brand.logoBrown} alt={brand.name} width={220} height={220} style={{ maxWidth: 220, height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 6px 18px rgba(58,24,32,.12))' }} priority={false} />
           </div>
-          <p className="body" style={{ marginTop: 24, maxWidth: 440, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 18 }}>
-            {brand.pillars.map(p => (
-              <span key={p} className="chip" style={{ borderColor: `${brand.color}55`, color: brand.color, fontSize: 9 }}>{p}</span>
-            ))}
-          </div>
-          <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 26, flexWrap: 'wrap' }}>
-            <button className="btn" style={{ borderColor: brand.color, color: brand.color }} onClick={onOpen}>
+          <p className="body" style={{ marginTop: 22, maxWidth: 440, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
+          <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginTop: 28, flexWrap: 'wrap' }}>
+            <button
+              className="btn brand"
+              style={{ ['--btn-brand-color' as string]: brand.color } as React.CSSProperties}
+              onClick={onOpen}
+            >
               Inside the house <span className="arr">→</span>
             </button>
             {brand.instagram && (
@@ -372,7 +364,13 @@ function BrandLightbox({ brand, onClose }: { brand: Brand | null; onClose: () =>
         )}
 
         <div className="brand-panel-actions">
-          <button className="btn" style={{ borderColor: brand.color, color: brand.color }} onClick={onClose}>Close</button>
+          <button
+            className="btn brand"
+            style={{ ['--btn-brand-color' as string]: brand.color } as React.CSSProperties}
+            onClick={onClose}
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>

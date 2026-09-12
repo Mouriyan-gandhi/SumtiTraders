@@ -121,6 +121,38 @@ a { color: inherit; text-decoration: none; }
 .btn.solid:hover { background: var(--ink); border-color: var(--ink); color: var(--cream-paper); }
 .btn.ghost { border-color: var(--ink-soft); color: var(--ink); }
 .btn.ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--cream-paper); }
+/* Brand-colored button: pass color via CSS custom property so hover
+   properly inverts without inline styles fighting the :hover selector. */
+.btn.brand {
+  border-color: var(--btn-brand-color, var(--rust));
+  color: var(--btn-brand-color, var(--rust));
+  background: transparent;
+}
+.btn.brand:hover {
+  background: var(--btn-brand-color, var(--rust));
+  border-color: var(--btn-brand-color, var(--rust));
+  color: var(--cream-paper);
+}
+.btn.brand-solid {
+  background: var(--btn-brand-color, var(--rust));
+  border-color: var(--btn-brand-color, var(--rust));
+  color: var(--cream-paper);
+}
+.btn.brand-solid:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream-paper);
+}
+.btn.on-dark {
+  border-color: var(--cream-paper);
+  color: var(--cream-paper);
+  background: transparent;
+}
+.btn.on-dark:hover {
+  background: var(--cream-paper);
+  border-color: var(--cream-paper);
+  color: var(--ink);
+}
 .btn .arr { font-family: var(--f-display); font-size: 18px; line-height: 0; transform: translateY(-1px); }
 
 .chip {
