@@ -40,9 +40,9 @@ function JewelCard({ product, onClick }: { product: Product; onClick: () => void
   return (
     <div className="jewel-card" onClick={onClick} role="button" tabIndex={0}>
       <div className="label">{product.brand}</div>
-      <div className="placeholder" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="placeholder">
         {product.image_url ? (
-          <Image src={product.image_url} alt={formattedName} fill sizes="(max-width: 768px) 50vw, 320px" style={{ objectFit: 'contain' }} />
+          <Image src={product.image_url} alt={formattedName} fill sizes="(max-width: 768px) 50vw, 320px" style={{ objectFit: 'contain', padding: 18 }} />
         ) : (
           <Jewel kind={product.category} />
         )}
