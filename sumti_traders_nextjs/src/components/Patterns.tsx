@@ -241,3 +241,97 @@ export const Jewel = ({ kind = 'necklace' }: { kind?: string }) => {
   const C = placeholders[kind] || JewelNecklace
   return <C />
 }
+
+/* ======================================================
+   SERVICE-CARD EMBLEMS
+   Small artistic marks tuned to render inside the 84×84
+   icon tiles on the "Who We Serve" cards. viewBox is
+   60×60 so a stroke of 1 renders at ~1px on screen.
+   ====================================================== */
+
+const EmblemRetailers = () => (
+  <svg viewBox="0 0 60 60" fill="none" stroke="#8a6d2a" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M30 5 L32.4 9 L30 13 L27.6 9 Z" fill="#efe1be" />
+    <path d="M8 20 L30 12 L52 20" />
+    <path d="M10 20 L10 52 L50 52 L50 20" />
+    <path d="M10 20 L50 20" />
+    <path d="M10 30 L50 30" strokeOpacity=".7" />
+    <path d="M10 40 L50 40" strokeOpacity=".7" />
+    <circle cx="18" cy="25" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="30" cy="25" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="42" cy="25" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="18" cy="35" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="30" cy="35" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="42" cy="35" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="18" cy="45" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="30" cy="45" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="42" cy="45" r="1.4" fill="#8a6d2a" stroke="none" />
+  </svg>
+)
+
+const EmblemCentres = () => (
+  <svg viewBox="0 0 60 60" fill="none" stroke="#8a6d2a" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M6 52 L54 52" />
+    <path d="M10 52 L10 30 Q10 10 30 6 Q50 10 50 30 L50 52" />
+    <path d="M18 52 L18 34 Q18 18 30 14 Q42 18 42 34 L42 52" strokeOpacity=".55" />
+    <circle cx="30" cy="10" r="1.4" fill="#8a6d2a" stroke="none" />
+    <path d="M30 14 L30 26" strokeOpacity=".7" />
+    <path d="M27 26 L30 32 L33 26 Z" fill="#efe1be" />
+    <circle cx="30" cy="26" r="1.2" fill="#8a6d2a" stroke="none" />
+    <path d="M14 44 L46 44" strokeOpacity=".4" />
+  </svg>
+)
+
+const EmblemWomen = () => (
+  <svg viewBox="0 0 60 60" fill="none" stroke="#8a6d2a" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="30" cy="30" r="24" strokeOpacity=".55" />
+    <circle cx="30" cy="30" r="19" strokeOpacity=".3" />
+    {Array.from({ length: 6 }).map((_, i) => (
+      <g key={i} transform={`rotate(${i * 60} 30 30)`}>
+        <path d="M30 12 Q35 22 30 30 Q25 22 30 12 Z" fill="rgba(138,109,42,0.12)" />
+      </g>
+    ))}
+    <circle cx="30" cy="30" r="4" fill="#efe1be" />
+    <circle cx="30" cy="30" r="1.6" fill="#8a6d2a" stroke="none" />
+    {Array.from({ length: 6 }).map((_, i) => {
+      const a = (i / 6) * Math.PI * 2 + Math.PI / 6
+      const x = 30 + Math.cos(a) * 24
+      const y = 30 + Math.sin(a) * 24
+      return <circle key={i} cx={Number(x.toFixed(3))} cy={Number(y.toFixed(3))} r="1.2" fill="#8a6d2a" stroke="none" />
+    })}
+  </svg>
+)
+
+const EmblemWalkIn = () => (
+  <svg viewBox="0 0 60 60" fill="none" stroke="#8a6d2a" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M10 12 L50 12" />
+    <path d="M14 12 Q14 22 30 26" />
+    <path d="M46 12 Q46 22 30 26" />
+    <path d="M22 12 Q22 18 30 22" strokeOpacity=".55" />
+    <path d="M38 12 Q38 18 30 22" strokeOpacity=".55" />
+    <circle cx="14" cy="12" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="30" cy="12" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="46" cy="12" r="1.4" fill="#8a6d2a" stroke="none" />
+    <circle cx="22" cy="16" r="1" fill="#8a6d2a" stroke="none" />
+    <circle cx="38" cy="16" r="1" fill="#8a6d2a" stroke="none" />
+    <circle cx="30" cy="32" r="6.5" fill="rgba(138,109,42,0.18)" />
+    <circle cx="30" cy="32" r="6.5" />
+    <circle cx="30" cy="32" r="2.5" strokeOpacity=".7" />
+    <circle cx="30" cy="32" r="1" fill="#8a6d2a" stroke="none" />
+    <path d="M30 38.5 L27.5 45 L30 54 L32.5 45 Z" fill="#efe1be" />
+    <path d="M30 38.5 L27.5 45 L30 54 L32.5 45 Z" />
+    <circle cx="30" cy="45" r="1.2" fill="#8a6d2a" stroke="none" />
+  </svg>
+)
+
+const emblems: Record<string, React.ComponentType> = {
+  retailers: EmblemRetailers,
+  centres: EmblemCentres,
+  women: EmblemWomen,
+  walkin: EmblemWalkIn,
+}
+
+export const ServiceEmblem = ({ kind }: { kind: string }) => {
+  const C = emblems[kind] || EmblemRetailers
+  return <C />
+}

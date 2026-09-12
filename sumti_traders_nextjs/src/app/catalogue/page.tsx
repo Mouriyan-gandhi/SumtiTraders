@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import SiteLayout from '@/components/SiteLayout'
 import { TinyDiamond, Divider, Ornament, Jewel } from '@/components/Patterns'
 import { supabase } from '@/lib/supabase'
-import type { Metadata } from 'next'
+import JewelCardSkeleton from '@/components/JewelCardSkeleton'
 
 const CATEGORIES = [
   { id: 'all', label: 'All Pieces' },
@@ -21,7 +22,7 @@ const HOUSES = [
   { id: 'all', label: 'All Houses' },
   { id: 'First Touch', label: 'First Touch' },
   { id: 'Swarnika', label: 'Swarnika' },
-  { id: 'Sumti', label: 'Sumti' },
+  { id: 'Sumti', label: 'FT' },
 ]
 
 type Product = {
@@ -41,7 +42,7 @@ function JewelCard({ product, onClick }: { product: Product; onClick: () => void
       <div className="label">{product.brand}</div>
       <div className="placeholder" style={{ position: 'relative', overflow: 'hidden' }}>
         {product.image_url ? (
-          <img src={product.image_url} alt={formattedName} style={{ width: '100%', height: '100%', objectFit: 'contain' }} loading="lazy" />
+          <Image src={product.image_url} alt={formattedName} fill sizes="(max-width: 768px) 50vw, 320px" style={{ objectFit: 'contain' }} />
         ) : (
           <Jewel kind={product.category} />
         )}
@@ -79,46 +80,70 @@ export default function CataloguePage() {
     <SiteLayout>
       {/* HERO */}
       <section style={{
-        padding: 'clamp(40px, 5vw, 70px) clamp(22px, 4vw, 60px) clamp(30px, 4vw, 40px)',
+        padding: 'clamp(40px, 5vw, 70px) clamp(22px, 4vw, 60px) clamp(32px, 4vw, 48px)',
         background: 'var(--cream-paper)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .18 }} aria-hidden="true" />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Collections · Season AW &apos;25</span></div>
-          <h1 className="display" style={{ fontSize: 'clamp(48px, 8vw, 124px)', lineHeight: 0.9, marginTop: 18 }}>
-            The <em>Couverture</em><br />catalogue.
-          </h1>
-          <p className="thin" style={{ fontSize: 22, fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 22, maxWidth: 560 }}>
-            A curated preview from all three houses. Click any piece for the detail card. The complete catalogue ships physically with retailer accounts.
-          </p>
+        <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 items-end">
+          <div>
+            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Collections · Season AW &apos;25</span></div>
+            <h1 className="display" style={{ fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: 0.92, marginTop: 16, maxWidth: '15ch' }}>
+              The <em>Couverture</em> catalogue.
+            </h1>
+            <p className="thin" style={{ fontSize: 'clamp(17px, 1.6vw, 20px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 18, maxWidth: 560, lineHeight: 1.4 }}>
+              A curated preview from all three houses. Click any piece for the detail card. The complete catalogue ships physically with retailer accounts.
+            </p>
+          </div>
+
+          {/* Meta panel — fills right side, avoids dead space */}
+          <div className="hidden md:block" style={{
+            border: '1px solid rgba(138,109,42,.25)',
+            background: 'rgba(255,255,255,.35)',
+            padding: '22px 24px',
+          }}>
+            <div className="eyebrow" style={{ fontSize: 9, color: 'var(--gold)' }}>At a glance</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 14 }}>
+              <div>
+                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>{products.length}</div>
+                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Live pieces</div>
+              </div>
+              <div>
+                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>3</div>
+                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Houses</div>
+              </div>
+              <div>
+                <div className="display" style={{ fontSize: 32, lineHeight: 1 }}>7</div>
+                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Categories</div>
+              </div>
+              <div>
+                <div className="display" style={{ fontSize: 32, lineHeight: 1, fontStyle: 'italic', color: 'var(--gold)' }}>AW &apos;25</div>
+                <div className="body-sm" style={{ fontSize: 11, letterSpacing: '.1em', marginTop: 4, textTransform: 'uppercase', color: 'var(--ink-muted)' }}>Season</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FILTER BAR */}
-      <div className="sticky top-[52px] md:top-[64px] z-10" style={{
-        padding: 'clamp(18px, 2vw, 28px) clamp(22px, 4vw, 60px)',
-        background: 'var(--cream-warm)',
-        borderTop: '1px solid rgba(138,109,42,.2)',
-        borderBottom: '1px solid rgba(138,109,42,.2)',
-      }}>
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center flex-wrap">
-          <div className="eyebrow md:mr-2 whitespace-nowrap">Filter</div>
-          <div className="filters">
-            {CATEGORIES.map(c => (
-              <span key={c.id} className={`filter ${cat === c.id ? 'active' : ''}`} onClick={() => setCat(c.id)} role="button" tabIndex={0}>{c.label}</span>
-            ))}
+      <div className="sticky top-[52px] md:top-[64px] z-10 catalogue-filter">
+        <div className="catalogue-filter-inner">
+          <div className="cf-row">
+            <div className="cf-label">Type</div>
+            <div className="cf-chips">
+              {CATEGORIES.map(c => (
+                <span key={c.id} className={`filter ${cat === c.id ? 'active' : ''}`} onClick={() => setCat(c.id)} role="button" tabIndex={0}>{c.label}</span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center mt-3 md:mt-[10px] flex-wrap">
-          <div className="eyebrow md:mr-2 whitespace-nowrap">House</div>
-          <div className="filters">
-            {HOUSES.map(c => (
-              <span key={c.id} className={`filter ${house === c.id ? 'active' : ''}`} onClick={() => setHouse(c.id)} role="button" tabIndex={0}>{c.label}</span>
-            ))}
-          </div>
-          <div style={{ marginLeft: 'auto', fontFamily: 'var(--f-caps)', fontSize: 10, letterSpacing: '.22em', color: 'var(--ink-muted)', textTransform: 'uppercase' }}>
-            {items.length} piece{items.length !== 1 && 's'}
+          <div className="cf-row">
+            <div className="cf-label">House</div>
+            <div className="cf-chips">
+              {HOUSES.map(c => (
+                <span key={c.id} className={`filter ${house === c.id ? 'active' : ''}`} onClick={() => setHouse(c.id)} role="button" tabIndex={0}>{c.label}</span>
+              ))}
+            </div>
+            <div className="cf-count">{items.length} piece{items.length !== 1 && 's'}</div>
           </div>
         </div>
       </div>
@@ -130,8 +155,8 @@ export default function CataloguePage() {
         minHeight: 400,
       }}>
         {loading ? (
-          <div style={{ textAlign: 'center', padding: 60 }}>
-            <p className="thin" style={{ fontSize: 22, fontStyle: 'italic', marginTop: 18 }}>Loading catalogue...</p>
+          <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-[10px] md:gap-[18px]">
+            {Array.from({ length: 12 }).map((_, i) => <JewelCardSkeleton key={i} />)}
           </div>
         ) : items.length === 0 ? (
           <div style={{ textAlign: 'center', padding: 60 }}>
@@ -139,7 +164,7 @@ export default function CataloguePage() {
             <p className="thin" style={{ fontSize: 22, fontStyle: 'italic', marginTop: 18 }}>No pieces in this slice. Try another filter.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-[10px] md:gap-[18px]">
+          <div className="grid grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-[10px] md:gap-[18px]">
             {items.map((it) => (
               <JewelCard key={it.id} product={it} onClick={() => setActive(it)} />
             ))}
@@ -171,9 +196,9 @@ export default function CataloguePage() {
         {active && (
           <div className="panel" onClick={e => e.stopPropagation()}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
-              <div style={{ aspectRatio: '1/1', background: 'var(--cream-warm)', padding: 24, border: '1px solid rgba(138,109,42,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ aspectRatio: '1/1', background: 'var(--cream-warm)', padding: 24, border: '1px solid rgba(138,109,42,.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                 {active.image_url ? (
-                  <img src={active.image_url} alt={`${active.brand} ${active.category}`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                  <Image src={active.image_url} alt={`${active.brand} ${active.category}`} fill sizes="(max-width: 768px) 90vw, 640px" style={{ objectFit: 'contain', padding: 24 }} />
                 ) : (
                   <Jewel kind={active.category} />
                 )}

@@ -15,6 +15,14 @@ const PAGES = [
 export default function SiteHeader() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -22,7 +30,7 @@ export default function SiteHeader() {
   }
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <Link href="/" className="logo">
         <span className="display" style={{ fontSize: 26, letterSpacing: '.04em', textTransform: 'none' }}>Sumti</span>
         <em className="display" style={{ fontStyle: 'italic', fontSize: 26, letterSpacing: '.02em', textTransform: 'none' }}>Traders</em>
@@ -60,7 +68,6 @@ export default function SiteHeader() {
       </nav>
 
       <div className="right">
-        <span className="lang hidden md:inline">EN · TA</span>
         <Link
           href="/contact"
           className="btn hidden md:inline-flex"

@@ -2,9 +2,12 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SiteLayout from '@/components/SiteLayout'
-import { TinyDiamond, Ornament, Seal, Jewel } from '@/components/Patterns'
+import { TinyDiamond, Ornament, Seal, Jewel, ServiceEmblem } from '@/components/Patterns'
 import { supabase } from '@/lib/supabase'
+import CountUp from '@/components/CountUp'
+import JewelCardSkeleton from '@/components/JewelCardSkeleton'
 
 /* ====== Brand tile ====== */
 const BrandTile = ({
@@ -47,7 +50,7 @@ const JewelCard = ({ product, onClick }: { product: Product; onClick?: () => voi
       <div className="label">{product.brand}</div>
       <div className="placeholder" style={{ position: 'relative', overflow: 'hidden' }}>
         {product.image_url ? (
-          <img src={product.image_url} alt={formattedName} style={{ width: '100%', height: '100%', objectFit: 'contain' }} loading="lazy" />
+          <Image src={product.image_url} alt={formattedName} fill sizes="(max-width: 768px) 50vw, 280px" style={{ objectFit: 'contain' }} />
         ) : (
           <Jewel kind={product.category} />
         )}
@@ -86,10 +89,12 @@ const ServiceCard = ({
         flex: '0 0 84px', width: 84, height: 84,
         background: 'var(--cream-warm)',
         border: '1px solid rgba(138,109,42,.3)',
-        padding: 12,
+        padding: 10,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <Jewel kind={kind} />
+        <div style={{ width: '100%', height: '100%', display: 'flex' }}>
+          <ServiceEmblem kind={kind} />
+        </div>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div className="thin" style={{ fontSize: 13, color: accent ? 'var(--cream-deep)' : 'var(--gold)', letterSpacing: '.3em' }}>N° {n}</div>
@@ -114,11 +119,13 @@ const ServiceCard = ({
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([])
+  const [loadingProducts, setLoadingProducts] = useState(true)
 
   useEffect(() => {
     async function fetchLatest() {
       const { data } = await supabase.from('products').select('*').order('created_at', { ascending: false }).limit(8)
       if (data) setProducts(data)
+      setLoadingProducts(false)
     }
     fetchLatest()
   }, [])
@@ -137,7 +144,9 @@ export default function HomePage() {
           position: 'absolute', right: '-18%', top: '-22%',
           width: '900px', height: '900px',
           backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
-          opacity: .55, pointerEvents: 'none',
+          opacity: 1, pointerEvents: 'none',
+          filter: 'brightness(0.35) contrast(2.4) saturate(1.2)',
+          mixBlendMode: 'multiply',
           animation: 'spin 240s linear infinite',
         }} aria-hidden="true" />
         {/* paisley scatter */}
@@ -148,17 +157,12 @@ export default function HomePage() {
           opacity: .35, pointerEvents: 'none',
         }} aria-hidden="true" />
 
-        <div style={{ position: 'relative', zIndex: 2 }}>
+        <div className="fadeup" style={{ position: 'relative', zIndex: 2 }}>
           {/* chips */}
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 36 }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 36, flexWrap: 'wrap' }}>
             <span className="chip">Since 1970</span>
             <span className="chip">Chennai · 3 Branches</span>
-            <span className="chip" style={{ display: 'none' }}>
-              <span className="hidden md:inline">Wholesale Atelier</span>
-            </span>
-            <span className="chip" style={{} as React.CSSProperties}>
-              <span>Wholesale Atelier</span>
-            </span>
+            <span className="chip">10,000+ Retail Partners</span>
           </div>
 
           {/* type lockup */}
@@ -206,14 +210,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <section className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          <span>Necklaces <TinyDiamond /> Earrings <TinyDiamond /> Bangles <TinyDiamond /> Maang Tikka <TinyDiamond /> Rings <TinyDiamond /> Nose Pins <TinyDiamond /> Anklets <TinyDiamond /> Bracelets <TinyDiamond /> Bridal Sets <TinyDiamond /></span>
-          <span>Necklaces <TinyDiamond /> Earrings <TinyDiamond /> Bangles <TinyDiamond /> Maang Tikka <TinyDiamond /> Rings <TinyDiamond /> Nose Pins <TinyDiamond /> Anklets <TinyDiamond /> Bracelets <TinyDiamond /> Bridal Sets <TinyDiamond /></span>
-        </div>
-      </section>
-
       {/* LEGACY BAND */}
       <section style={{
         padding: 'clamp(60px, 8vw, 110px) clamp(22px, 4vw, 60px)',
@@ -224,35 +220,32 @@ export default function HomePage() {
           <Seal size={420} />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: 720 }}>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-            <TinyDiamond /> <span>The House</span>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(auto, 420px) 1fr', gap: 60, alignItems: 'center' }}>
-            <div>
-              <div className="thin" style={{ fontSize: 36, color: 'var(--gold)', fontStyle: 'italic', letterSpacing: '.02em', lineHeight: 1 }}>Since</div>
-              <div className="display" style={{ fontSize: 'clamp(96px, 15vw, 180px)', lineHeight: '0.88', color: 'var(--ink)', marginTop: 4, letterSpacing: '-0.02em' }}>1970</div>
-            </div>
-            <div>
-              <p className="display" style={{ fontSize: 44, lineHeight: 1.1, marginBottom: 14 }}>
-                A heritage in <em>gold covering jewellery.</em>
-              </p>
-              <p className="body" style={{ maxWidth: 460, color: 'var(--ink-soft)' }}>
-                Sumti Traders has supplied India&apos;s finest retailers with gold covering jewellery since the 1970s. Three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch, Swarnika, FT</em> — answer to three markets, all to one standard of finish.
-              </p>
-            </div>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 1200, margin: '0 auto' }}>
+          <div className="eyebrow fadeup" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
+            <TinyDiamond /> <span>The House · Since 1970</span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-16">
+          <div className="fadeup fadeup-delay-1 legacy-intro">
+            <h2 className="display legacy-headline">
+              A heritage in <em>gold covering jewellery.</em>
+            </h2>
+            <p className="body legacy-lede">
+              Sumti Traders has supplied India&apos;s finest retailers with gold covering jewellery since the 1970s. Three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch, Swarnika, FT</em> — answer to three markets, all to one standard of finish.
+            </p>
+          </div>
+
+          <div className="legacy-stats fadeup fadeup-delay-2">
             {[
-              ['1970', 'Year we began'],
-              ['10,000+', 'Wholesale partners we empower'],
-              ['3,000+', 'Women entrepreneurs supported'],
-              ['3', 'Branches in Chennai'],
-            ].map(([n, l], i) => (
-              <div key={i} style={{ borderTop: '1px solid rgba(26,22,18,.25)', paddingTop: 14 }}>
-                <div className="display" style={{ fontSize: 40, lineHeight: 1 }}>{n}</div>
-                <div className="body-sm" style={{ marginTop: 6, fontSize: 12, lineHeight: 1.4 }}>{l}</div>
+              { n: 1970, suffix: '', l: 'Year we began', fmt: (v: number) => v.toString() },
+              { n: 10000, suffix: '+', l: 'Wholesale partners empowered' },
+              { n: 3000, suffix: '+', l: 'Women entrepreneurs supported' },
+              { n: 3, suffix: '', l: 'Chennai branches' },
+            ].map((s, i) => (
+              <div key={i} className="legacy-stat">
+                <div className="display legacy-stat-num">
+                  <CountUp end={s.n} suffix={s.suffix} formatter={s.fmt} />
+                </div>
+                <div className="legacy-stat-label">{s.l}</div>
               </div>
             ))}
           </div>
@@ -265,7 +258,7 @@ export default function HomePage() {
         background: 'var(--cream-paper)',
         position: 'relative',
       }}>
-        <div className="sect-head">
+        <div className="sect-head fadeup">
           <div className="left">
             <div className="eyebrow"><span className="snum">N° 02</span> · <span>Our Three Houses</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
@@ -277,10 +270,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
-          <BrandTile num="i" name="First Touch" tag="Gold Covering · Forming" desc="The flagship house. Gold covering and traditional forming jewellery — bridal sets, statement haarams, temple-inspired pieces. Made for the occasions of a lifetime." accent="#7a3a2a" />
-          <BrandTile num="ii" name="Swarnika" tag="Temple · American Diamond" desc="Premium-quality temple jewellery and American diamond pieces. The connoisseur's house — careful, considered, made to be noticed up close." accent="#8a5028" />
-          <BrandTile num="iii" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish — the daily floor's best friend." accent="#2c2520" />
+        <div className="brand-tri-grid mt-6">
+          <div className="fadeup brand-side"><BrandTile num="i" name="First Touch" tag="Gold Covering · Forming · Flagship" desc="The flagship house. Gold covering and traditional forming jewellery — bridal sets, statement haarams, temple-inspired pieces." accent="#7a3a2a" /></div>
+          <div className="fadeup fadeup-delay-1 brand-hero"><BrandTile num="ii" name="Swarnika" tag="Temple · American Diamond · The Connoisseur's House" desc="Premium-quality temple jewellery and American diamond pieces. Careful, considered, made to be noticed up close. The centrepiece of the Sumti family." accent="#8a5028" /></div>
+          <div className="fadeup fadeup-delay-2 brand-side"><BrandTile num="iii" name="FT" tag="Affordable · Fashion" desc="Budget-friendly fashion jewellery for retailers who move volume. Accessible price, refined finish." accent="#2c2520" /></div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
@@ -314,15 +307,23 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
-            <ServiceCard n="01" title="Retailers" titleEm="& Wholesalers" body="Jewellery shops, multi-brand stores, distributors. Direct from our Chennai branches with the full range of all three houses — catalogue, samples, credit terms, repeat orders." tag="Bulk supply" kind="necklace" />
-            <ServiceCard n="02" title="Shopping Centres" titleEm="& Pop-ups" body="On request, we set up dedicated counters at malls, exhibitions, festive bazaars and shopping centres. We bring the display, the inventory and the staff training — you bring the floor space." tag="On-request setup" kind="bangle" />
-            <ServiceCard n="03" title="3,000+ Women" titleEm="Entrepreneurs" body="Our reseller programme empowers more than three thousand women running their own jewellery businesses online. We supply at wholesale rates, share lookbooks, and help them grow." tag="Reseller programme" kind="earring" accent />
-            <ServiceCard n="04" title="Walk-in Clients" titleEm="& Bridal Parties" body="All three Chennai branches welcome walk-in bulk buyers and bridal trousseau bookings — by appointment for the bridal floor, open counter for retail-trade." tag="In-branch" kind="maang" />
+            <div className="fadeup"><ServiceCard n="01" title="Retailers" titleEm="& Wholesalers" body="Jewellery shops, multi-brand stores, distributors. Direct from our Chennai branches with the full range of all three houses — catalogue, samples, credit terms, repeat orders." tag="Bulk supply" kind="retailers" /></div>
+            <div className="fadeup fadeup-delay-1"><ServiceCard n="02" title="Shopping Centres" titleEm="& Pop-ups" body="On request, we set up dedicated counters at malls, exhibitions, festive bazaars and shopping centres. We bring the display, the inventory and the staff training — you bring the floor space." tag="On-request setup" kind="centres" /></div>
+            <div className="fadeup fadeup-delay-2"><ServiceCard n="03" title="3,000+ Women" titleEm="Entrepreneurs" body="Our reseller programme empowers more than three thousand women running their own jewellery businesses online. We supply at wholesale rates, share lookbooks, and help them grow." tag="Reseller programme" kind="women" accent /></div>
+            <div className="fadeup fadeup-delay-3"><ServiceCard n="04" title="Walk-in Clients" titleEm="& Bridal Parties" body="All three Chennai branches welcome walk-in bulk buyers and bridal trousseau bookings — by appointment for the bridal floor, open counter for retail-trade." tag="In-branch" kind="walkin" /></div>
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
             <Link href="/contact" className="btn solid">Open a wholesale account <span className="arr">→</span></Link>
           </div>
+        </div>
+      </section>
+
+      {/* MARQUEE — sits as transition between Who We Serve and Recent Pieces */}
+      <section className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          <span>Necklaces <TinyDiamond /> Earrings <TinyDiamond /> Bangles <TinyDiamond /> Maang Tikka <TinyDiamond /> Rings <TinyDiamond /> Nose Pins <TinyDiamond /> Anklets <TinyDiamond /> Bracelets <TinyDiamond /> Bridal Sets <TinyDiamond /></span>
+          <span>Necklaces <TinyDiamond /> Earrings <TinyDiamond /> Bangles <TinyDiamond /> Maang Tikka <TinyDiamond /> Rings <TinyDiamond /> Nose Pins <TinyDiamond /> Anklets <TinyDiamond /> Bracelets <TinyDiamond /> Bridal Sets <TinyDiamond /></span>
         </div>
       </section>
 
@@ -337,7 +338,7 @@ export default function HomePage() {
           backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px', opacity: .18, pointerEvents: 'none',
         }} aria-hidden="true" />
         <div style={{ position: 'relative' }}>
-          <div className="sect-head">
+          <div className="sect-head fadeup">
             <div className="left">
               <div className="eyebrow"><span className="snum">N° 04</span> · <span>Recent Pieces</span></div>
               <h2 className="display" style={{ fontSize: 'clamp(38px, 5vw, 64px)' }}>
@@ -349,10 +350,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 18 }}>
-            {products.map(p => (
-              <JewelCard key={p.id} product={p} />
-            ))}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 18 }}>
+            {loadingProducts
+              ? Array.from({ length: 8 }).map((_, i) => <JewelCardSkeleton key={i} />)
+              : products.map((p, i) => (
+                  <div key={p.id} className={`fadeup ${i < 4 ? `fadeup-delay-${(i % 4) + 1}` : ''}`}>
+                    <JewelCard product={p} />
+                  </div>
+                ))
+            }
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
@@ -385,31 +391,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA STRIP */}
-      <section style={{
-        padding: 'clamp(50px, 6vw, 90px) clamp(22px, 4vw, 60px)',
-        background: 'var(--cream-warm)',
-        position: 'relative', overflow: 'hidden',
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center', justifyContent: 'space-between', gap: 40,
-          maxWidth: 1080, margin: '0 auto', flexWrap: 'wrap',
-        }}>
-          <div>
-            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;Wholesale Enquiries</div>
-            <h3 className="display" style={{ fontSize: 'clamp(32px, 4vw, 52px)', marginTop: 12, lineHeight: 1 }}>
-              Open a <em>wholesale</em><br />account with us.
-            </h3>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <p className="body" style={{ maxWidth: 320 }}>Bulk orders, retailer enquiries, and atelier visits — write to us at the Chennai head office.</p>
-            <div style={{ display: 'flex', gap: 10 }}>
-              <Link href="/contact" className="btn solid">Contact us <span className="arr">→</span></Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </SiteLayout>
   )
 }

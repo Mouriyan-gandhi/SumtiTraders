@@ -24,9 +24,9 @@ export default function SiteFooter() {
         <div>
           <h4>Visit</h4>
           <ul>
-            <li><Link href="/contact">Sowcarpet</Link></li>
-            <li><Link href="/contact">T. Nagar</Link></li>
-            <li><Link href="/contact">Anna Nagar</Link></li>
+            <li><Link href="/contact#sowcarpet">Sowcarpet</Link></li>
+            <li><Link href="/contact#t-nagar">T. Nagar</Link></li>
+            <li><Link href="/contact#anna-nagar">Anna Nagar</Link></li>
           </ul>
         </div>
         <div>
@@ -34,15 +34,14 @@ export default function SiteFooter() {
           <ul>
             <li><Link href="/about">The story</Link></li>
             <li><Link href="/catalogue">Catalogue</Link></li>
-            <li><Link href="/contact">Wholesale desk</Link></li>
-            <li><Link href="/contact">Press</Link></li>
+            <li><Link href="/contact#wholesale">Wholesale desk</Link></li>
           </ul>
         </div>
       </div>
       <div className="legal" style={{ position: 'relative' }}>
         <span>© 2026 Sumti Traders · Chennai</span>
         <span className="hidden md:inline">Empowering 10,000+ retail partners across India</span>
-        <span>Privacy · Terms</span>
+        <span>All rights reserved</span>
       </div>
     </footer>
   )

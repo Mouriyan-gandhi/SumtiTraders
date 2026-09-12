@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
 import SiteLayout from '@/components/SiteLayout'
 import { TinyDiamond, Divider, Ornament, Seal } from '@/components/Patterns'
+import CountUp from '@/components/CountUp'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sumtitraders.in'
 
 export const metadata: Metadata = {
-  title: 'Our Heritage — Sumti Traders since 1970',
-  description: 'The story of Sumti Traders — from a single counter in Sowcarpet to three houses and 10,000+ retail partners across India.',
+  title: 'Our Heritage — Sumti Traders since 1970 · Chennai Gold Covering Jewellery',
+  description:
+    'From a single counter in Sowcarpet in 1970 to three houses, three Chennai branches, 10,000+ retail partners and 3,000+ women entrepreneurs. The Sumti Traders story.',
+  keywords: [
+    'Sumti Traders story',
+    'Sumti Traders history',
+    'Chennai jewellery wholesalers since 1970',
+    'gold covering jewellery makers Chennai',
+  ],
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'Our Heritage — Sumti Traders since 1970',
+    description: 'Fifty years of wholesale gold covering jewellery from Chennai.',
+    url: `${SITE_URL}/about`,
+    type: 'article',
+  },
 }
 
 const TIMELINE = [
@@ -20,45 +37,37 @@ const TIMELINE = [
 export default function AboutPage() {
   return (
     <SiteLayout>
-      {/* HERO */}
+      {/* HERO + INTRO — single composition */}
       <section style={{
-        padding: 'clamp(50px, 6vw, 90px) clamp(22px, 4vw, 60px) clamp(30px, 4vw, 60px)',
+        padding: 'clamp(48px, 6vw, 88px) clamp(22px, 4vw, 60px) clamp(56px, 7vw, 96px)',
         position: 'relative', overflow: 'hidden',
         background: 'var(--cream-paper)',
       }}>
         <div style={{ position: 'absolute', inset: 0, opacity: .18, backgroundImage: 'url(/patterns/paisley.svg)', backgroundSize: '320px' }} aria-hidden="true" />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Story · Since 1970</span></div>
-          <h1 className="display" style={{ fontSize: 'clamp(54px, 9vw, 132px)', lineHeight: 0.88, marginTop: 18 }}>
-            A heritage<br />
-            of <em>trust.</em>
-          </h1>
-        </div>
-      </section>
 
-      {/* INTRO + SEAL */}
-      <section style={{
-        padding: 'clamp(40px, 5vw, 60px) clamp(22px, 4vw, 60px) clamp(60px, 8vw, 100px)',
-        background: 'var(--cream-paper)',
-      }}>
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-20 items-center">
-        <div>
-          <p className="thin" style={{ fontSize: 28, fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)' }}>
-            Sumti Traders began on a single counter in Sowcarpet, Chennai — one workbench, one ledger, a few hundred designs.
-          </p>
-          <p className="body" style={{ marginTop: 24, fontSize: 14, lineHeight: 1.8 }}>
-            More than five decades on, what began as a single counter has grown into a three-house operation empowering over ten thousand retail partners across India. The principle has not changed. We make gold covering jewellery the way it ought to be made: finished by people who can tell the right curve from a curve that is almost right.
-          </p>
-          <p className="body" style={{ marginTop: 16, fontSize: 14, lineHeight: 1.8 }}>
-            Our three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch</em> for gold covering and forming, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>Swarnika</em> for premium temple and American diamond, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>FT</em> for affordable fashion — reach retailers in every corner of the country from three Chennai branches.
-          </p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', opacity: .25 }} aria-hidden="true" />
-          <div style={{ position: 'relative' }}>
-            <Seal size={360} />
+        <div className="relative grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-10 md:gap-16 items-center">
+          <div className="fadeup">
+            <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TinyDiamond />&nbsp;<span>Our Story · Since 1970</span></div>
+            <h1 className="display" style={{ fontSize: 'clamp(48px, 7vw, 108px)', lineHeight: 0.9, marginTop: 16 }}>
+              A heritage<br />of <em>trust.</em>
+            </h1>
+            <p className="thin" style={{ fontSize: 'clamp(20px, 2vw, 26px)', fontStyle: 'italic', lineHeight: 1.35, color: 'var(--ink)', marginTop: 28, maxWidth: 520 }}>
+              Sumti Traders began on a single counter in Sowcarpet, Chennai — one workbench, one ledger, a few hundred designs.
+            </p>
+            <p className="body" style={{ marginTop: 20, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
+              More than five decades on, what began as a single counter has grown into a three-house operation empowering over ten thousand retail partners across India. The principle has not changed. We make gold covering jewellery the way it ought to be made: finished by people who can tell the right curve from a curve that is almost right.
+            </p>
+            <p className="body" style={{ marginTop: 14, fontSize: 14, lineHeight: 1.8, maxWidth: 540 }}>
+              Our three houses — <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>First Touch</em> for gold covering and forming, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>Swarnika</em> for premium temple and American diamond, <em style={{ fontStyle: 'italic', color: 'var(--ink)' }}>FT</em> for affordable fashion — reach retailers in every corner of the country from three Chennai branches.
+            </p>
           </div>
-        </div>
+
+          <div className="fadeup fadeup-delay-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: 'clamp(260px, 34vw, 440px)' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/patterns/mandala.svg)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', opacity: .25 }} aria-hidden="true" />
+            <div style={{ position: 'relative', width: 'clamp(240px, 30vw, 380px)' }}>
+              <Seal size={360} />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -86,7 +95,7 @@ export default function AboutPage() {
             ['02', 'The Form', 'Master karigars shape each component in-house. Brass base, copper plate, gold covering — every step within sight of the bench, every finish checked against a five-decade archive.'],
             ['03', 'The Quiet', 'Before a piece leaves Chennai, it rests on the studio table for forty-eight hours. We look at it in the morning, at noon, in evening light. If it still looks right at the end, it ships.'],
           ].map(([n, t, d], i) => (
-            <div key={i} style={{
+            <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
               background: 'var(--cream-paper)',
               padding: 36,
               border: '1px solid rgba(138,109,42,.2)',
@@ -125,11 +134,11 @@ export default function AboutPage() {
 
         <div style={{ position: 'relative', maxWidth: 820, margin: '0 auto' }}>
           {TIMELINE.map((e, i) => (
-            <div key={e.y} className="grid grid-cols-[64px_1fr] md:grid-cols-[120px_36px_1fr] gap-5 md:gap-7 items-baseline" style={{
+            <div key={e.y} className="fadeup grid grid-cols-[64px_1fr] md:grid-cols-[120px_36px_1fr] gap-5 md:gap-7 items-baseline" style={{
               padding: '24px 0',
               borderTop: i === 0 ? 'none' : '1px solid rgba(138,109,42,.25)',
             }}>
-              <div className="display" style={{ fontSize: 'clamp(26px, 5vw, 36px)', color: 'var(--gold)', fontStyle: 'italic' }}>{e.y}</div>
+              <div className="display" style={{ fontSize: 'clamp(30px, 5vw, 40px)', color: 'var(--gold)', fontStyle: 'italic' }}>{e.y}</div>
               <div className="hidden md:flex justify-center items-center h-[36px]" aria-hidden="true">
                 <span style={{ display: 'inline-block', width: 9, height: 9, background: 'var(--gold)', transform: 'rotate(45deg)' }} />
               </div>
@@ -157,7 +166,7 @@ export default function AboutPage() {
           <div>
             <div className="eyebrow"><span className="snum">N° 04</span> · <span>The Reseller Programme</span></div>
             <h2 className="display" style={{ fontSize: 'clamp(44px, 8vw, 84px)', lineHeight: 0.95, marginTop: 14 }}>
-              <span className="display" style={{ fontSize: 'clamp(84px, 15vw, 160px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}>3,000<span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
+              <span className="display" style={{ fontSize: 'clamp(84px, 15vw, 160px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}><CountUp end={3000} /><span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
               women, <em>their own</em><br />businesses.
             </h2>
           </div>
@@ -197,7 +206,7 @@ export default function AboutPage() {
               ['Three houses', 'First Touch, Swarnika, FT — three markets, one trust.'],
               ['Together we grow', '3,000+ women entrepreneurs running businesses with us.'],
             ].map(([t, d], i) => (
-              <div key={i}>
+              <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`}>
                 <div className="display" style={{ fontSize: 22, color: 'var(--cream-paper)' }}>{t}</div>
                 <div className="body-sm" style={{ marginTop: 8, color: 'rgba(250,243,224,.65)' }}>{d}</div>
               </div>

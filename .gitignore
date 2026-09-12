@@ -1,2 +1,9 @@
 venv/
 node_modules/
+.DS_Store
+**/.DS_Store
+.next/
+.vercel/
+.env
+.env.local
+.env.*.local
