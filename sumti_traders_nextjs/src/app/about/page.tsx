@@ -163,9 +163,12 @@ export default function AboutPage() {
         <div className="relative grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-[70px] items-center">
           <div>
             <div className="eyebrow"><span>The Reseller Programme</span></div>
-            <h2 className="display" style={{ fontSize: 'clamp(44px, 8vw, 84px)', lineHeight: 0.95, marginTop: 14 }}>
-              <span className="display" style={{ fontSize: 'clamp(84px, 15vw, 160px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85 }}><CountUp end={3000} /><span style={{ fontFamily: 'var(--f-thin)', fontStyle: 'italic' }}>+</span></span>
-              women, <em>their own</em><br />businesses.
+            <h2 className="display" style={{ fontSize: 'clamp(38px, 6.4vw, 68px)', lineHeight: 1.02, marginTop: 14, letterSpacing: '-0.005em' }}>
+              <span className="display" style={{ fontSize: 'clamp(80px, 14vw, 148px)', color: 'var(--gold)', display: 'block', lineHeight: 0.85, marginBottom: 6 }}>
+                <CountUp end={3000} /><em style={{ fontStyle: 'italic' }}>+</em>
+              </span>
+              <span style={{ display: 'block' }}>women, running</span>
+              <span style={{ display: 'block' }}><em>their own</em> businesses.</span>
             </h2>
           </div>
           <div>
