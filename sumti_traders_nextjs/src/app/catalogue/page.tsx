@@ -176,16 +176,22 @@ export default function CataloguePage() {
               </div>
               <div>
                 <div className="eyebrow">{active.brand} · Couverture</div>
-                <h3 className="display" style={{ fontSize: 44, marginTop: 8, lineHeight: 1, wordBreak: 'break-word', textTransform: 'capitalize' }}>
+                <h3 className="display" style={{ fontSize: 'clamp(28px, 4vw, 44px)', marginTop: 8, lineHeight: 1.05, wordBreak: 'break-word', textTransform: 'capitalize' }}>
                   <em>{active.brand} {active.category}</em>
                 </h3>
                 <Divider />
-                <p className="body" style={{ marginTop: 14 }}>
+                <p className="body" style={{ marginTop: 14, fontSize: 14, lineHeight: 1.7 }}>
                   <span style={{ textTransform: 'capitalize' }}>{active.category}</span>, finished at the Sumti workshop. Available in matched sets.
                 </p>
-                <div style={{ display: 'flex', gap: 20, marginTop: 20 }}>
-                  <div><div className="eyebrow">Ref</div><div className="display" style={{ fontSize: 20, marginTop: 4 }}>{active.id}</div></div>
-                  <div><div className="eyebrow">Type</div><div className="display" style={{ fontSize: 20, marginTop: 4, textTransform: 'capitalize' }}>{active.category}</div></div>
+                <div style={{ display: 'flex', gap: 20, marginTop: 20, flexWrap: 'wrap' }}>
+                  <div style={{ minWidth: 0, flex: '1 1 auto' }}>
+                    <div className="eyebrow">Ref</div>
+                    <div className="display" style={{ fontSize: 16, marginTop: 4, wordBreak: 'break-all' }}>{active.id}</div>
+                  </div>
+                  <div>
+                    <div className="eyebrow">Type</div>
+                    <div className="display" style={{ fontSize: 18, marginTop: 4, textTransform: 'capitalize' }}>{active.category}</div>
+                  </div>
                 </div>
                 <div style={{ marginTop: 24 }}>
                   <button className="btn solid">Enquire wholesale <span className="arr">→</span></button>

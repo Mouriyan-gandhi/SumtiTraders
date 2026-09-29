@@ -291,12 +291,22 @@ export default function ContactPage() {
         <div className="fadeup relative grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-8 md:gap-14 items-end">
           <div>
             <div className="lead-eyebrow">Visit · Write · Order</div>
-            <h1 className="display" style={{ fontSize: 'clamp(46px, 7vw, 108px)', lineHeight: 0.92, marginTop: 16 }}>
+            <h1 className="display" style={{ fontSize: 'clamp(38px, 7vw, 108px)', lineHeight: 0.94, marginTop: 16 }}>
               One address.<br /><em>Everything</em> Sumti.
             </h1>
-            <p className="thin" style={{ fontSize: 'clamp(18px, 1.8vw, 22px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 22, maxWidth: 560, lineHeight: 1.4 }}>
+            <p className="thin" style={{ fontSize: 'clamp(17px, 1.8vw, 22px)', fontStyle: 'italic', color: 'var(--ink-soft)', marginTop: 22, maxWidth: 560, lineHeight: 1.4 }}>
               Walk in to our Sowcarpet head office, message us on WhatsApp, or open a wholesale account from anywhere in India. We answer.
             </p>
+
+            {/* Mobile-only quick contact row */}
+            <div className="md:hidden" style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <a href={`https://wa.me/${WHOLESALE_WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer" className="btn solid" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
+                <WhatsAppGlyph color="#faf3e0" /> WhatsApp
+              </a>
+              <a href={`mailto:${WHOLESALE_EMAIL}`} className="btn" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
+                Email us
+              </a>
+            </div>
           </div>
 
           {/* Wholesale desk quick-reach panel */}
@@ -412,17 +422,17 @@ export default function ContactPage() {
             <Divider />
             <div style={{ marginTop: 16 }}>
               <div className="eyebrow" style={{ fontSize: 9 }}>Wholesale Desk</div>
-              <a href={`mailto:${WHOLESALE_EMAIL}`} className="display" style={{ display: 'block', fontSize: 22, marginTop: 6, fontStyle: 'italic', color: 'var(--ink)' }}>{WHOLESALE_EMAIL}</a>
-              <a href={`https://wa.me/${WHOLESALE_WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer" className="display" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 20, marginTop: 6, fontStyle: 'italic', color: 'var(--ink)' }}>
+              <a href={`mailto:${WHOLESALE_EMAIL}`} className="display" style={{ display: 'block', fontSize: 'clamp(17px, 2.2vw, 22px)', marginTop: 6, fontStyle: 'italic', color: 'var(--ink)', wordBreak: 'break-all' }}>{WHOLESALE_EMAIL}</a>
+              <a href={`https://wa.me/${WHOLESALE_WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer" className="display" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 'clamp(16px, 2vw, 20px)', marginTop: 6, fontStyle: 'italic', color: 'var(--ink)' }}>
                 <WhatsAppGlyph color="#1a1612" /> {WHOLESALE_WHATSAPP_DISPLAY}
               </a>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14, fontSize: 10, color: 'var(--ink)', letterSpacing: '.28em' }}>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 14, fontSize: 10, color: 'var(--ink)', letterSpacing: '.24em' }}>
                 <InstagramGlyph color="#1a1612" /> On Instagram (FT &amp; Swarnika)
               </a>
             </div>
           </div>
 
-          <div className="fadeup fadeup-delay-1" style={{ background: 'var(--cream-warm)', padding: 40, border: '1px solid rgba(138,109,42,.2)' }}>
+          <div className="fadeup fadeup-delay-1" style={{ background: 'var(--cream-warm)', padding: 'clamp(24px, 4vw, 40px)', border: '1px solid rgba(138,109,42,.2)' }}>
             {!submitted ? (
               <form onSubmit={handleSubmit} noValidate>
                 <input
@@ -471,7 +481,7 @@ export default function ContactPage() {
                     style={{
                       width: '100%', resize: 'vertical',
                       background: 'var(--cream-paper)', border: '1px solid rgba(138,109,42,.3)',
-                      padding: 14, fontFamily: 'var(--f-body)', fontSize: 13, color: 'var(--ink)',
+                      padding: 14, fontFamily: 'var(--f-body)', fontSize: 16, color: 'var(--ink)',
                       outline: 'none',
                     }}
                   />

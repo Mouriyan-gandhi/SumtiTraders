@@ -101,19 +101,19 @@ export default function AboutPage() {
           ].map(([n, t, d], i) => (
             <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
               background: 'var(--cream-paper)',
-              padding: 36,
+              padding: 'clamp(24px, 4vw, 36px)',
               border: '1px solid rgba(138,109,42,.2)',
               position: 'relative',
             }}>
               <div style={{ position: 'absolute', top: 18, right: 18, opacity: .4 }} aria-hidden="true">
                 <Ornament size={60} />
               </div>
-              <div className="thin" style={{ fontSize: 14, color: 'var(--gold)', letterSpacing: '.3em' }}>STAGE {n}</div>
-              <h3 className="display" style={{ fontSize: 32, marginTop: 12, lineHeight: 1 }}>
+              <div className="thin" style={{ fontSize: 12, color: 'var(--gold)', letterSpacing: '.3em' }}>STAGE {n}</div>
+              <h3 className="display" style={{ fontSize: 'clamp(26px, 3.4vw, 32px)', marginTop: 12, lineHeight: 1 }}>
                 {t.split(' ').map((w, wi) => wi === t.split(' ').length - 1 ? <em key={wi}>{w}</em> : <span key={wi}>{w} </span>)}
               </h3>
               <Divider />
-              <p className="body" style={{ marginTop: 18, fontSize: 13, lineHeight: 1.75 }}>{d}</p>
+              <p className="body" style={{ marginTop: 16, fontSize: 13, lineHeight: 1.7 }}>{d}</p>
             </div>
           ))}
         </div>
@@ -172,7 +172,7 @@ export default function AboutPage() {
             </h2>
           </div>
           <div>
-            <p className="thin" style={{ fontSize: 22, fontStyle: 'italic', lineHeight: 1.4, color: 'var(--ink)' }}>
+            <p className="thin" style={{ fontSize: 'clamp(17px, 2vw, 22px)', fontStyle: 'italic', lineHeight: 1.4, color: 'var(--ink)' }}>
               More than three thousand women across India run jewellery businesses online with our support.
             </p>
             <p className="body" style={{ marginTop: 18, fontSize: 14, lineHeight: 1.75 }}>

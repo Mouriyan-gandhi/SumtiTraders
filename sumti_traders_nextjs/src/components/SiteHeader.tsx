@@ -79,11 +79,12 @@ export default function SiteHeader() {
           className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
-          style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: 4 }}
+          aria-expanded={menuOpen}
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 5, padding: 10, minWidth: 44, minHeight: 44 }}
         >
-          <span style={{ width: 22, height: 1, background: 'var(--ink)', display: 'block' }} />
-          <span style={{ width: 22, height: 1, background: 'var(--ink)', display: 'block' }} />
-          <span style={{ width: 22, height: 1, background: 'var(--ink)', display: 'block' }} />
+          <span style={{ width: 22, height: 1.5, background: 'var(--ink)', display: 'block' }} />
+          <span style={{ width: 22, height: 1.5, background: 'var(--ink)', display: 'block' }} />
+          <span style={{ width: 22, height: 1.5, background: 'var(--ink)', display: 'block' }} />
         </button>
       </div>
 

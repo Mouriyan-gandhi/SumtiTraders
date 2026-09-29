@@ -285,7 +285,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 40px;
 }
 .sect-head .left .eyebrow { margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-.sect-head .left h2 { font-family: var(--f-display); font-size: 56px; line-height: .95; }
+.sect-head .left h2 { font-family: var(--f-display); font-size: clamp(32px, 5vw, 56px); line-height: 1; }
 .sect-head .left h2 em { font-style: italic; }
 .sect-head .right { max-width: 320px; }
 .sect-head .right p { font-size: 13px; line-height: 1.7; color: var(--ink-soft); }
@@ -401,27 +401,33 @@ a { color: inherit; text-decoration: none; }
 .lightbox.open { opacity: 1; pointer-events: auto; }
 .lightbox .panel {
   background: var(--cream-paper);
-  width: min(720px, 90%);
-  padding: 40px;
+  width: min(720px, 92%);
+  padding: clamp(20px, 4vw, 40px);
   border: 1px solid var(--gold);
   transform: translateY(20px);
   transition: transform .4s ease;
-  max-height: 85vh;
+  max-height: 88vh;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .lightbox.open .panel { transform: translateY(0); }
 .lightbox .close {
   position: absolute;
-  top: 28px;
-  right: 32px;
+  top: clamp(14px, 3vw, 28px);
+  right: clamp(16px, 3vw, 32px);
   color: var(--cream-paper);
   font-family: var(--f-display);
-  font-size: 32px;
+  font-size: clamp(28px, 4vw, 36px);
   background: transparent;
   border: 0;
   cursor: pointer;
   line-height: 1;
   z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Brand lightbox — dedicated tighter layout */
@@ -698,31 +704,106 @@ main.page-enter {
 .site-header nav a:hover::before { right: 0; }
 .site-header nav a.active::before { display: none; }
 
+/* =========================================================
+   HOME HERO — meta blocks
+   ========================================================= */
+.home-hero-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 30px;
+  align-items: end;
+  margin-top: 42px;
+}
+.home-hero-lede { max-width: 460px; }
+.home-hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.home-hero-chips {
+  margin-top: 42px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.home-hero-metabar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px clamp(20px, 4vw, 60px);
+  font-family: var(--f-caps);
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
 /* Mobile overrides */
 @media (max-width: 767px) {
-  .site-header { padding: 14px 18px; }
+  .site-header { padding: 12px 18px; }
   .site-header nav { display: none; }
   .site-header .logo { font-size: 18px; gap: 6px; }
+  .site-header .logo .est { display: none !important; }
   .sect-head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
-  .sect-head .left h2 { font-size: 36px; }
+  .sect-head .left h2 { font-size: 34px; line-height: 1.05; }
   .sect-head .right { max-width: 100%; }
   .site-footer { padding: 36px 22px 22px; }
   .site-footer .grid { grid-template-columns: 1fr; gap: 28px; }
-  .site-footer .legal { flex-direction: column; gap: 12px; text-align: left; }
+  .site-footer .legal { flex-direction: column; gap: 10px; text-align: left; align-items: flex-start; }
   .marquee { padding: 14px 0; }
-  .marquee-track span { font-size: 26px; }
-  .btn { padding: 12px 18px; font-size: 10px; letter-spacing: .22em; }
-  .chip { font-size: 9px; padding: 5px 10px; }
-  .brand-card { min-height: 320px; padding: 22px; }
-  .brand-card h3 { font-size: 32px; }
-  .brand-card .desc { margin-top: 12px; }
+  .marquee-track span { font-size: 22px; }
+  .btn { padding: 12px 16px; font-size: 10px; letter-spacing: .22em; }
+  .chip { font-size: 9px; padding: 5px 10px; letter-spacing: .16em; }
+  .brand-card { min-height: 300px; padding: 24px 22px; }
+  .brand-card h3 { font-size: 28px; }
+  .brand-card .desc { margin-top: 12px; font-size: 13px; }
   .brand-tri-grid { gap: 14px; }
   .brand-tri-grid .brand-hero .brand-card,
-  .brand-tri-grid .brand-side .brand-card { min-height: 300px; }
+  .brand-tri-grid .brand-side .brand-card { min-height: 280px; }
   .jewel-card .meta { transform: translateY(0); }
-  .jewel-card .meta h4 { font-size: 16px; }
+  .jewel-card .meta h4 { font-size: 15px; }
   .jewel-card .meta .row { font-size: 9px; }
   .jewel-card .label { font-size: 8px; padding: 4px 7px; }
+
+  /* Home hero */
+  .home-hero-meta {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 30px;
+  }
+  .home-hero-cta { width: 100%; }
+  .home-hero-cta .btn { flex: 1 1 auto; justify-content: center; min-width: 0; }
+  .home-hero-chips { margin-top: 26px; gap: 8px; }
+  .home-hero-metabar {
+    padding: 12px 18px;
+    font-size: 9px;
+    letter-spacing: .18em;
+  }
+  .home-hero-metabar-mid { display: none; }
+
+  /* Reduce heavy typography */
+  .lead-eyebrow { font-size: 10px; letter-spacing: .28em; }
+  .lead-eyebrow::before { width: 20px; }
+
+  /* Legacy band on home */
+  .legacy-headline { font-size: 34px !important; line-height: 1.05 !important; max-width: 100% !important; }
+  .legacy-lede { padding-bottom: 0 !important; font-size: 14px; }
+  .legacy-stat-num { font-size: 30px !important; }
+  .legacy-stat-label { font-size: 11px; }
+
+  /* Buttons in stacked hero — full-width */
+  .home-hero-cta .btn.solid,
+  .home-hero-cta .btn { padding: 14px 16px; font-size: 10px; }
+
+  /* How wholesale works CTAs stack full-width */
+  .how-wholesale-cta { width: 100%; }
+  .how-wholesale-cta .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .site-header .logo { font-size: 16px; }
+  .btn { padding: 10px 14px; font-size: 9px; }
+  .chip { font-size: 8px; padding: 4px 8px; }
+  .home-hero-chips { gap: 6px; }
 }
 
 /* Spin animation for mandala */
@@ -795,9 +876,18 @@ main.page-enter {
 }
 .lead-eyebrow.on-dark { color: var(--cream-deep); }
 @media (max-width: 900px) {
-  .about-hero { grid-template-columns: 1fr; }
+  .about-hero { grid-template-columns: 1fr; min-height: 0; }
   .about-hero-media { aspect-ratio: 4 / 5; min-height: 0; }
-  .about-hero-copy { padding-top: 40px; }
+  .about-hero-copy { padding-top: 36px; padding-bottom: 20px; }
+}
+@media (max-width: 767px) {
+  .about-hero-media { aspect-ratio: 3 / 4; }
+  .about-hero-media-caption { font-size: 14px; }
+  .about-hero-media-caption span:last-child { font-size: 9px !important; letter-spacing: .22em !important; }
+  .about-hero-copy { padding: 30px 22px 20px; }
+  .about-hero-copy h1 { font-size: 44px !important; line-height: 0.95 !important; }
+  .about-hero-copy .thin { font-size: 17px !important; margin-top: 20px !important; }
+  .about-hero-copy .body { font-size: 13px !important; }
 }
 
 /* Legacy band — editorial intro + stat row */

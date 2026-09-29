@@ -95,7 +95,7 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
           aspectRatio: '4 / 5',
           background: brand.accentCream,
           border: `1px solid ${brand.color}33`,
-          padding: 56,
+          padding: 'clamp(28px, 5vw, 56px)',
           display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         }}>
           <div style={{ position: 'absolute', top: 16, left: 16, opacity: .5 }} aria-hidden="true"><CornerOrnament size={70} /></div>
@@ -124,16 +124,16 @@ function BrandSectionEditorial({ brand, reverse, onOpen }: { brand: Brand; rever
           <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{ color: brand.color }}>{brand.tagline}</span>
           </div>
-          <h2 className="display" style={{ fontSize: 'clamp(56px, 6.5vw, 88px)', lineHeight: 0.92, marginTop: 12, color: brand.color }}>
+          <h2 className="display" style={{ fontSize: 'clamp(42px, 6.5vw, 88px)', lineHeight: 0.94, marginTop: 12, color: brand.color }}>
             {brand.name.replace(brand.italic, '')}<em>{brand.italic}</em>
           </h2>
-          <p className="body" style={{ marginTop: 22, maxWidth: 460, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
+          <p className="body" style={{ marginTop: 20, maxWidth: 460, fontSize: 14, lineHeight: 1.75 }}>{brand.desc}</p>
 
-          <div style={{ display: 'flex', gap: 36, marginTop: 30, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'clamp(20px, 3vw, 36px)', marginTop: 26, flexWrap: 'wrap' }}>
             {brand.stats.map(([n, l], idx) => (
-              <div key={idx} style={{ borderTop: `1px solid ${brand.color}55`, paddingTop: 12, minWidth: 100 }}>
-                <div className="display" style={{ fontSize: 28, color: brand.color }}>{n}</div>
-                <div className="body-sm" style={{ marginTop: 2, fontSize: 11, letterSpacing: '.1em' }}>{l}</div>
+              <div key={idx} style={{ borderTop: `1px solid ${brand.color}55`, paddingTop: 12, minWidth: 92, flex: '1 1 92px' }}>
+                <div className="display" style={{ fontSize: 'clamp(24px, 3vw, 28px)', color: brand.color }}>{n}</div>
+                <div className="body-sm" style={{ marginTop: 2, fontSize: 11, letterSpacing: '.08em' }}>{l}</div>
               </div>
             ))}
           </div>
@@ -185,19 +185,19 @@ function BrandSectionDark({ brand, onOpen }: { brand: Brand; onOpen: () => void 
             <span style={{ display: 'inline-block', width: 6, height: 6, background: 'var(--gold-soft)', transform: 'rotate(45deg)' }} aria-hidden="true" />
             &nbsp;{brand.tagline}
           </div>
-          <h2 className="display" style={{ fontSize: 'clamp(56px, 7vw, 96px)', lineHeight: 0.92, marginTop: 14 }}>
+          <h2 className="display" style={{ fontSize: 'clamp(42px, 7vw, 96px)', lineHeight: 0.94, marginTop: 14 }}>
             {brand.name.replace(brand.italic, '')}<em style={{ color: 'var(--gold-soft)' }}>{brand.italic}</em>
           </h2>
-          <p className="thin" style={{ fontSize: 'clamp(20px, 2.2vw, 26px)', fontStyle: 'italic', lineHeight: 1.4, marginTop: 22, color: 'var(--cream-paper)', maxWidth: 560 }}>
+          <p className="thin" style={{ fontSize: 'clamp(17px, 2.2vw, 26px)', fontStyle: 'italic', lineHeight: 1.4, marginTop: 22, color: 'var(--cream-paper)', maxWidth: 560 }}>
             &ldquo; {brand.quote} &rdquo;
           </p>
           <p className="body" style={{ marginTop: 22, maxWidth: 520, color: 'rgba(250,243,224,.78)' }}>{brand.desc}</p>
 
-          <div style={{ display: 'flex', gap: 32, marginTop: 30, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'clamp(20px, 3vw, 32px)', marginTop: 26, flexWrap: 'wrap' }}>
             {brand.stats.map(([n, l], idx) => (
-              <div key={idx} style={{ borderTop: '1px solid rgba(250,243,224,.24)', paddingTop: 12, minWidth: 100 }}>
-                <div className="display" style={{ fontSize: 28, color: 'var(--gold-soft)' }}>{n}</div>
-                <div className="body-sm" style={{ marginTop: 2, fontSize: 11, letterSpacing: '.1em', color: 'rgba(250,243,224,.6)' }}>{l}</div>
+              <div key={idx} style={{ borderTop: '1px solid rgba(250,243,224,.24)', paddingTop: 12, minWidth: 92, flex: '1 1 92px' }}>
+                <div className="display" style={{ fontSize: 'clamp(24px, 3vw, 28px)', color: 'var(--gold-soft)' }}>{n}</div>
+                <div className="body-sm" style={{ marginTop: 2, fontSize: 11, letterSpacing: '.08em', color: 'rgba(250,243,224,.6)' }}>{l}</div>
               </div>
             ))}
           </div>

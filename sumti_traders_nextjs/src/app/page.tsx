@@ -85,16 +85,16 @@ const ServiceCard = ({
       background: accent ? 'var(--ink)' : 'var(--cream-paper)',
       color: accent ? 'var(--cream-paper)' : 'var(--ink)',
       border: `1px solid ${accent ? 'rgba(250,243,224,.15)' : 'rgba(138,109,42,.25)'}`,
-      padding: 28,
+      padding: 'clamp(20px, 3vw, 28px)',
       display: 'flex',
-      gap: 22,
+      gap: 'clamp(16px, 2.4vw, 22px)',
       alignItems: 'flex-start',
       minHeight: 220,
       position: 'relative',
       overflow: 'hidden',
     }}>
       <div style={{
-        flex: '0 0 84px', width: 84, height: 84,
+        flex: '0 0 clamp(64px, 8vw, 84px)', width: 'clamp(64px, 8vw, 84px)', height: 'clamp(64px, 8vw, 84px)',
         background: 'var(--cream-warm)',
         border: '1px solid rgba(138,109,42,.3)',
         padding: 10,
@@ -105,8 +105,8 @@ const ServiceCard = ({
         </div>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div className="thin" style={{ fontSize: 13, color: accent ? 'var(--cream-deep)' : 'var(--gold)', letterSpacing: '.3em' }}>N° {n}</div>
-        <h3 className="display" style={{ fontSize: 28, lineHeight: 1.05, marginTop: 8 }}>
+        <div className="thin" style={{ fontSize: 12, color: accent ? 'var(--cream-deep)' : 'var(--gold)', letterSpacing: '.28em' }}>N° {n}</div>
+        <h3 className="display" style={{ fontSize: 'clamp(22px, 3vw, 28px)', lineHeight: 1.1, marginTop: 8 }}>
           {title} <em style={{ fontStyle: 'italic' }}>{titleEm}</em>
         </h3>
         <p style={{
@@ -141,12 +141,11 @@ export default function HomePage() {
   return (
     <SiteLayout>
       {/* HERO */}
-      <section style={{
+      <section className="home-hero bg-marble" style={{
         position: 'relative',
-        padding: 'clamp(32px, 5vw, 70px) clamp(22px, 4vw, 60px) clamp(48px, 6vw, 90px)',
-        minHeight: '760px',
+        padding: 'clamp(32px, 5vw, 70px) clamp(20px, 4vw, 60px) clamp(80px, 8vw, 120px)',
         overflow: 'hidden',
-      }} className="bg-marble">
+      }}>
         {/* spinning mandala — only decorative element in hero */}
         <div style={{
           position: 'absolute', right: '-22%', top: '-25%',
@@ -172,19 +171,19 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: 30, alignItems: 'end', marginTop: 42 }}>
-            <div style={{ maxWidth: 440 }}>
-              <p className="thin" style={{ fontSize: 'clamp(19px, 1.6vw, 24px)', lineHeight: 1.4, color: 'var(--ink)', fontStyle: 'italic' }}>
+          <div className="home-hero-meta">
+            <div className="home-hero-lede">
+              <p className="thin" style={{ fontSize: 'clamp(17px, 1.6vw, 24px)', lineHeight: 1.45, color: 'var(--ink)', fontStyle: 'italic' }}>
                 Wholesale gold covering jewellery from a Sowcarpet workbench. Three houses, ten thousand retailers, one <em style={{ color: 'var(--rust)' }}>standard of finish.</em>
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <div className="home-hero-cta">
               <Link href="/contact#wholesale" className="btn solid">Open an account <span className="arr">→</span></Link>
               <Link href="/catalogue" className="btn">View catalogue</Link>
             </div>
           </div>
 
-          <div style={{ marginTop: 42, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="home-hero-chips">
             <span className="chip">GST-registered wholesaler</span>
             <span className="chip">Ships pan-India</span>
             <span className="chip">3,000+ women resellers</span>
@@ -194,13 +193,9 @@ export default function HomePage() {
         {/* bottom hairline + meta row */}
         <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
           <div className="hairline-gold" />
-          <div style={{
-            display: 'flex', justifyContent: 'space-between', padding: '16px 60px',
-            fontFamily: 'var(--f-caps)', fontSize: 10, letterSpacing: '.24em',
-            textTransform: 'uppercase', color: 'var(--ink-muted)',
-          }}>
+          <div className="home-hero-metabar">
             <span>Scroll to begin</span>
-            <span>The Couverture Collection</span>
+            <span className="home-hero-metabar-mid">The Couverture Collection</span>
             <span>↓</span>
           </div>
         </div>
@@ -332,19 +327,19 @@ export default function HomePage() {
               { n: '03', t: 'Ship pan-India', d: 'Packed at our Sowcarpet warehouse, dispatched by trusted courier. Most metros in two days, tier-2 and tier-3 in three to five.' },
             ].map((s, i) => (
               <div key={i} className={`fadeup ${i > 0 ? `fadeup-delay-${i}` : ''}`} style={{
-                padding: '30px 28px',
+                padding: 'clamp(22px, 3vw, 30px) clamp(22px, 3vw, 28px)',
                 background: 'var(--cream-base)',
                 borderTop: '2px solid var(--rust)',
                 position: 'relative',
               }}>
-                <div style={{ fontFamily: 'var(--f-display)', fontStyle: 'italic', fontSize: 52, color: 'var(--rust)', lineHeight: 1, letterSpacing: '-0.02em' }}>{s.n}</div>
-                <h3 className="display" style={{ fontSize: 24, lineHeight: 1.1, marginTop: 14 }}>{s.t}</h3>
+                <div style={{ fontFamily: 'var(--f-display)', fontStyle: 'italic', fontSize: 'clamp(40px, 5vw, 52px)', color: 'var(--rust)', lineHeight: 1, letterSpacing: '-0.02em' }}>{s.n}</div>
+                <h3 className="display" style={{ fontSize: 'clamp(20px, 2.6vw, 24px)', lineHeight: 1.1, marginTop: 14 }}>{s.t}</h3>
                 <p className="body-sm" style={{ marginTop: 12, color: 'var(--ink-soft)', fontSize: 13, lineHeight: 1.65 }}>{s.d}</p>
               </div>
             ))}
           </div>
 
-          <div style={{ marginTop: 40, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="how-wholesale-cta" style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
             <Link href="/contact#wholesale" className="btn solid">Open a wholesale account <span className="arr">→</span></Link>
             <a href="https://wa.me/919344761821" target="_blank" rel="noopener noreferrer" className="btn ghost">WhatsApp our desk <span className="arr">→</span></a>
           </div>
