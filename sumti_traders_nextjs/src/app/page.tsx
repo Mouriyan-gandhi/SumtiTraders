@@ -178,7 +178,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="home-hero-cta">
-              <Link href="/contact#wholesale" className="btn solid">Open an account <span className="arr">→</span></Link>
+              <Link href="/contact#wholesale" className="btn solid">Enquire now <span className="arr">→</span></Link>
               <Link href="/catalogue" className="btn">View catalogue</Link>
             </div>
           </div>
