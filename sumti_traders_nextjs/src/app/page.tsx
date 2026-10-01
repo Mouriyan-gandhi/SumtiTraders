@@ -293,7 +293,7 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
-            <Link href="/contact" className="btn solid">Open a wholesale account <span className="arr">→</span></Link>
+            <Link href="/contact" className="btn solid">Enquire wholesale <span className="arr">→</span></Link>
           </div>
         </div>
       </section>
@@ -322,7 +322,7 @@ export default function HomePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
             {[
-              { n: '01', t: 'Open an account', d: 'Send us your shop details, GST number, and a photo of your storefront. Approved within forty-eight hours. No franchise fee, no annual minimum.' },
+              { n: '01', t: 'Send an enquiry', d: 'Send us your shop details, GST number, and a photo of your storefront. Approved within forty-eight hours. No franchise fee, no annual minimum.' },
               { n: '02', t: 'Order your way', d: 'Walk in to Sowcarpet, message on WhatsApp with a piece reference, or send a purchase order by email. Whatever fits your day.' },
               { n: '03', t: 'Ship pan-India', d: 'Packed at our Sowcarpet warehouse, dispatched by trusted courier. Most metros in two days, tier-2 and tier-3 in three to five.' },
             ].map((s, i) => (
@@ -340,7 +340,7 @@ export default function HomePage() {
           </div>
 
           <div className="how-wholesale-cta" style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-            <Link href="/contact#wholesale" className="btn solid">Open a wholesale account <span className="arr">→</span></Link>
+            <Link href="/contact#wholesale" className="btn solid">Enquire now <span className="arr">→</span></Link>
             <a href="https://wa.me/919344761821" target="_blank" rel="noopener noreferrer" className="btn ghost">WhatsApp our desk <span className="arr">→</span></a>
           </div>
         </div>

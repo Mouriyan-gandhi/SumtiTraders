@@ -64,7 +64,7 @@ export default function SiteFooter() {
           <ul>
             <li><a href={`mailto:${WHOLESALE_EMAIL}`}>{WHOLESALE_EMAIL}</a></li>
             <li><a href={`https://wa.me/${WHATSAPP_INTL}`} target="_blank" rel="noopener noreferrer">{WHATSAPP_DISPLAY}</a></li>
-            <li><Link href="/contact#wholesale">Open an account</Link></li>
+            <li><Link href="/contact#wholesale">Send an enquiry</Link></li>
           </ul>
         </div>
       </div>
